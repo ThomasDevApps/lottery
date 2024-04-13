@@ -1,0 +1,58 @@
+# This workflow uses actions that are not certified by GitHub.
+# They are provided by a third-party and are governed by
+# separate terms of service, privacy policy, and support
+# documentation.
+
+name: testing
+
+on:
+  pull_request:
+    branches: [ "main", "dev" ]
+
+jobs:
+  test-flutter:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - uses: subosito/flutter-action@v2.16.0
+        with:
+          channel: 'stable'
+
+      - name: Create env file
+        run: |
+          touch .env
+          echo SUPABASE_URL="supabaseTestUrl" >> .env
+          echo SUPABASE_ANON_KEY="supabaseTestAnonKey" >> .env
+          cat .env    
+
+      - name: Build generated classes
+        run: flutter pub run build_runner build --delete-conflicting-outputs
+
+      - name: Install dependencies
+        run: flutter pub get
+
+      - name: Analyze project source
+        run: flutter analyze --no-fatal-infos
+
+      - name: Run tests
+        run: flutter test --coverage
+
+  #deploy_migrations:
+  #  runs-on: ubuntu-latest
+#
+  #  env:
+  #    SUPABASE_ACCESS_TOKEN: ${{ secrets.SUPABASE_ACCESS_TOKEN }}
+  #    SUPABASE_DB_PASSWORD: ${{ secrets.SUPABASE_DB_PASSWORD }}
+  #    DEV_PROJECT_ID: ${{ secrets.DEV_SUPABASE_PROJECT_ID }}
+#
+  #  steps:
+  #    - uses: actions/checkout@v3
+  #    - uses: supabase/setup-cli@v1
+  #      with:
+  #        version: 1.0.0
+#
+  #    - run: |
+  #        supabase link --project-ref $DEV_PROJECT_ID -p $SUPABASE_DB_PASSWORD
+  #        supabase db push -p $SUPABASE_DB_PASSWORD
+#
