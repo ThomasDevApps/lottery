@@ -6,8 +6,8 @@ part 'grid_model.g.dart';
 @freezed
 class GridModel with _$GridModel {
   const factory GridModel({
-    required List<int> numbers,
-    required List<int> specialNumbers,
+    required Set<int> numbers,
+    required Set<int> specialNumbers,
   }) = _GridModel;
 
   factory GridModel.fromJson(Map<String, dynamic> json) =>

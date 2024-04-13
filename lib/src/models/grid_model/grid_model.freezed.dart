@@ -20,8 +20,8 @@ GridModel _$GridModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$GridModel {
-  List<int> get numbers => throw _privateConstructorUsedError;
-  List<int> get specialNumbers => throw _privateConstructorUsedError;
+  Set<int> get numbers => throw _privateConstructorUsedError;
+  Set<int> get specialNumbers => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $GridModelCopyWith<$Res> {
   factory $GridModelCopyWith(GridModel value, $Res Function(GridModel) then) =
       _$GridModelCopyWithImpl<$Res, GridModel>;
   @useResult
-  $Res call({List<int> numbers, List<int> specialNumbers});
+  $Res call({Set<int> numbers, Set<int> specialNumbers});
 }
 
 /// @nodoc
@@ -57,11 +57,11 @@ class _$GridModelCopyWithImpl<$Res, $Val extends GridModel>
       numbers: null == numbers
           ? _value.numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
       specialNumbers: null == specialNumbers
           ? _value.specialNumbers
           : specialNumbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
     ) as $Val);
   }
 }
@@ -74,7 +74,7 @@ abstract class _$$GridModelImplCopyWith<$Res>
       __$$GridModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<int> numbers, List<int> specialNumbers});
+  $Res call({Set<int> numbers, Set<int> specialNumbers});
 }
 
 /// @nodoc
@@ -95,11 +95,11 @@ class __$$GridModelImplCopyWithImpl<$Res>
       numbers: null == numbers
           ? _value._numbers
           : numbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
       specialNumbers: null == specialNumbers
           ? _value._specialNumbers
           : specialNumbers // ignore: cast_nullable_to_non_nullable
-              as List<int>,
+              as Set<int>,
     ));
   }
 }
@@ -108,28 +108,27 @@ class __$$GridModelImplCopyWithImpl<$Res>
 @JsonSerializable()
 class _$GridModelImpl implements _GridModel {
   const _$GridModelImpl(
-      {required final List<int> numbers,
-      required final List<int> specialNumbers})
+      {required final Set<int> numbers, required final Set<int> specialNumbers})
       : _numbers = numbers,
         _specialNumbers = specialNumbers;
 
   factory _$GridModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GridModelImplFromJson(json);
 
-  final List<int> _numbers;
+  final Set<int> _numbers;
   @override
-  List<int> get numbers {
-    if (_numbers is EqualUnmodifiableListView) return _numbers;
+  Set<int> get numbers {
+    if (_numbers is EqualUnmodifiableSetView) return _numbers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_numbers);
+    return EqualUnmodifiableSetView(_numbers);
   }
 
-  final List<int> _specialNumbers;
+  final Set<int> _specialNumbers;
   @override
-  List<int> get specialNumbers {
-    if (_specialNumbers is EqualUnmodifiableListView) return _specialNumbers;
+  Set<int> get specialNumbers {
+    if (_specialNumbers is EqualUnmodifiableSetView) return _specialNumbers;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_specialNumbers);
+    return EqualUnmodifiableSetView(_specialNumbers);
   }
 
   @override
@@ -170,16 +169,16 @@ class _$GridModelImpl implements _GridModel {
 
 abstract class _GridModel implements GridModel {
   const factory _GridModel(
-      {required final List<int> numbers,
-      required final List<int> specialNumbers}) = _$GridModelImpl;
+      {required final Set<int> numbers,
+      required final Set<int> specialNumbers}) = _$GridModelImpl;
 
   factory _GridModel.fromJson(Map<String, dynamic> json) =
       _$GridModelImpl.fromJson;
 
   @override
-  List<int> get numbers;
+  Set<int> get numbers;
   @override
-  List<int> get specialNumbers;
+  Set<int> get specialNumbers;
   @override
   @JsonKey(ignore: true)
   _$$GridModelImplCopyWith<_$GridModelImpl> get copyWith =>
