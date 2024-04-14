@@ -24,9 +24,7 @@ each number being drawn.
 ## Getting started
 
 At the top of the application, you need to initialise the lottery with a 
-CSV file to be used as data.
-
-The `pathCsv` can be `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`
+CSV file to be used as data : 
 
 ```dart
 Future<void> main() async {
@@ -42,13 +40,11 @@ Future<void> main() async {
 }
 ```
 
+The `pathCsv` can be for example `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`.
+
 ## Usage
 
 A complete example is in the `example` folder.
-
-```dart
-const like = 'sample';
-```
 
 ## Additional information
 
