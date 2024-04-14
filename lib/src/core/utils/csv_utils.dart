@@ -10,7 +10,7 @@ class _CsvUtils {
     // Decode all fields
     List<List<dynamic>> fields = await input
         .transform(utf8.decoder)
-        .transform(const CsvToListConverter())
+        .transform(const CsvToListConverter(eol: ':'))
         .toList();
     return fields;
   }
