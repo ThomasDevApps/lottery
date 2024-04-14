@@ -22,7 +22,9 @@ class LotteryScreen extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 8),
               child: Column(
                 children: outputs
+                    .map((e) => Expanded(child: e))
                     .cast<Widget>()
+                    .toList()
                     ._addSeparator(const SizedBox(height: 16)),
               ),
             ),
