@@ -66,6 +66,7 @@ class Lottery {
   /// Function to initialize [numbers] and [specialNumbers]
   /// according with [gridsFromCsv].
   @visibleForTesting
+  @protected
   void initializeStatistics() {
     for (var grid in gridsFromCsv) {
       // Put each number in the numbers map
@@ -95,6 +96,7 @@ class Lottery {
     );
   }
 
+  @protected
   @visibleForTesting
   Set<int> drawRandomNumbers(Map<int, int> data, {required int length}) {
     final list = createListProbabilities(data);
@@ -120,6 +122,7 @@ class Lottery {
   /// print(createListProbabilities(inputs)); // [4, 4, 8, 8, 8, 8, 12, 12, 12]
   /// ```
   @visibleForTesting
+  @protected
   List<int> createListProbabilities(Map<int, int> inputs) {
     final List<int> list = [];
     inputs.forEach((key, value) {
