@@ -2,6 +2,7 @@ library lottery;
 
 import 'dart:convert';
 import 'dart:io';
+import 'dart:math';
 
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
@@ -59,5 +60,40 @@ abstract class Lottery {
         specialNumbers[specialNumber] = value + 1;
       }
     }
+  }
+
+  bool wasWinningGrid(GridModel gridModel) {
+    return gridsFromCsv.contains(gridModel);
+  }
+
+  GridModel draw({required int length, required int specialLength}) {
+    return GridModel(
+      numbers: drawRandomNumbers(numbers, length: length),
+      specialNumbers: drawRandomNumbers(specialNumbers, length: specialLength),
+    );
+  }
+
+  @visibleForTesting
+  Set<int> drawRandomNumbers(Map<int, int> data, {required int length}) {
+    final list = createListProbabilities(data);
+    final numbers = <int>{};
+    while (numbers.length < length) {
+      int randomIndex = Random().nextInt(list.length - 1);
+      int elementToAdd = list.elementAt(randomIndex);
+      numbers.add(elementToAdd);
+      list.removeWhere((element) => element == elementToAdd);
+    }
+    return numbers;
+  }
+
+  @visibleForTesting
+  List<int> createListProbabilities(Map<int, int> inputs) {
+    final List<int> list = [];
+    inputs.forEach((key, value) {
+      for (var i = 0; i < value; i++) {
+        list.add(key);
+      }
+    });
+    return list;
   }
 }
