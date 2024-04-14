@@ -11,12 +11,15 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+# Lottery
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+- Access to statistics for each number and special number 
+(find out how many times the number has been drawn)
+- Draw a grid at random while taking into account the probability of 
+each number being drawn.
+- Find out if the grid drawn at random is a winning grid
 
 ## Getting started
 
