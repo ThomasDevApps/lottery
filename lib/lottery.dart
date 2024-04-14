@@ -115,4 +115,8 @@ class Lottery {
     });
     return list;
   }
+
+  void dispose() {
+    _instance = null;
+  }
 }
