@@ -30,7 +30,6 @@ class Lottery {
 
   /// Factory constructor of [Lottery], returns [_instance].
   factory Lottery() {
-    _instance ??= Lottery._();
     return _instance!;
   }
 
