@@ -10,10 +10,10 @@ class LotteryScreen extends StatelessWidget {
   final List<LotteryOutputs> outputs;
 
   /// Length of numbers to be drawn.
-  final int length;
+  final int numbersLength;
 
   /// Length of special numbers to be drawn.
-  final int specialLength;
+  final int specialNumbersLength;
 
   /// Decoration of numbers.
   final LotteryNumberItemDecoration numberDecoration;
@@ -25,8 +25,8 @@ class LotteryScreen extends StatelessWidget {
     super.key,
     this.backgroundColor,
     required this.outputs,
-    required this.length,
-    required this.specialLength,
+    required this.numbersLength,
+    required this.specialNumbersLength,
     required this.numberDecoration,
     required this.specialNumberDecoration,
   });
@@ -52,8 +52,8 @@ class LotteryScreen extends StatelessWidget {
             ),
             Expanded(
               child: LotteryRandomPick(
-                length: length,
-                specialLength: specialLength,
+                numbersLength: numbersLength,
+                specialNumbersLength: specialNumbersLength,
                 numberDecoration: numberDecoration,
                 specialNumberDecoration: specialNumberDecoration,
               ),

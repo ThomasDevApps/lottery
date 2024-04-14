@@ -35,8 +35,8 @@ class MyApp extends StatelessWidget {
             decoration: const LotteryOutputsDecoration(primary: Colors.orange),
           )
         ],
-        length: 4,
-        specialLength: 3,
+        numbersLength: 4,
+        specialNumbersLength: 3,
         numberDecoration: LotteryNumberItemDecoration(
           backgroundColor: Colors.blue,
         ),
