@@ -16,14 +16,27 @@ class MyApp extends StatelessWidget {
       theme: ThemeData.dark(
         useMaterial3: true,
       ),
-      home: const LotteryScreen(
-        outputs: [
+      home: LotteryScreen(
+        outputs: const [
           LotteryOutputs(
             outputs: {4: 16, 7: 2},
             title: 'Number',
+            decoration: LotteryOutputsDecoration(primary: Colors.blue),
+          ),
+          LotteryOutputs(
+            outputs: {1: 15, 42: 10},
+            title: 'Special',
             decoration: LotteryOutputsDecoration(primary: Colors.orange),
           )
         ],
+        length: 4,
+        specialLength: 3,
+        numberDecoration: LotteryNumberItemDecoration(
+          backgroundColor: Colors.blue,
+        ),
+        specialNumberDecoration: LotteryNumberItemDecoration(
+          backgroundColor: Colors.orange,
+        ),
       ),
     );
   }

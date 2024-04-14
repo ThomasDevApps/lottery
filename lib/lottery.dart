@@ -10,16 +10,29 @@ import 'package:lottery/src/models/grid_model/grid_model.dart';
 
 export 'src/models/grid_model/grid_model.dart';
 export 'src/view/screens/lottery_screen.dart';
+export 'src/view/widgets/lottery_number_item.dart';
 export 'src/view/widgets/lottery_outputs.dart';
 
 part 'src/core/utils/csv_utils.dart';
 
-abstract class Lottery {
+class Lottery {
+  /// Current instance of [Lottery].
+  static Lottery? _instance;
+
   final Map<int, int> numbers = {};
   final Map<int, int> specialNumbers = {};
   final List<GridModel> gridsFromCsv = [];
 
   bool _isInitialized = false;
+
+  /// Private constructor of [Lottery].
+  Lottery._();
+
+  /// Factory constructor of [Lottery], returns [_instance].
+  factory Lottery() {
+    _instance ??= Lottery._();
+    return _instance!;
+  }
 
   Future<void> initialize({
     required String pathCsv,

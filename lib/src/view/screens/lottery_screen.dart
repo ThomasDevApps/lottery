@@ -5,11 +5,19 @@ import 'package:lottery/src/view/widgets/lottery_random_pick.dart';
 class LotteryScreen extends StatelessWidget {
   final Color? backgroundColor;
   final List<LotteryOutputs> outputs;
+  final int length;
+  final int specialLength;
+  final LotteryNumberItemDecoration numberDecoration;
+  final LotteryNumberItemDecoration specialNumberDecoration;
 
   const LotteryScreen({
     super.key,
     this.backgroundColor,
     required this.outputs,
+    required this.length,
+    required this.specialLength,
+    required this.numberDecoration,
+    required this.specialNumberDecoration,
   });
 
   @override
@@ -19,6 +27,7 @@ class LotteryScreen extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 20),
         child: Row(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -32,10 +41,10 @@ class LotteryScreen extends StatelessWidget {
             ),
             Expanded(
               child: LotteryRandomPick(
-                draw: () {},
-                isWinning: (GridModel gridDrawn) {},
-                numberDecoration: null,
-                specialNumberDecoration: null,
+                length: length,
+                specialLength: specialLength,
+                numberDecoration: numberDecoration,
+                specialNumberDecoration: specialNumberDecoration,
               ),
             ),
           ],

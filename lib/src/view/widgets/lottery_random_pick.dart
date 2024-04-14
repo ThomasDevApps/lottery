@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
-import 'package:lottery/src/view/widgets/lottery_number_item.dart';
 
 class LotteryRandomPick extends StatefulWidget {
-  final GridModel Function() draw;
-  final bool Function(GridModel gridDrawn) isWinning;
+  final int length;
+  final int specialLength;
   final LotteryNumberItemDecoration numberDecoration;
   final LotteryNumberItemDecoration specialNumberDecoration;
 
   const LotteryRandomPick({
     super.key,
-    required this.draw,
-    required this.isWinning,
+    required this.length,
+    required this.specialLength,
     required this.numberDecoration,
     required this.specialNumberDecoration,
   });
@@ -55,11 +54,14 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
           children: [
             ElevatedButton(
               onPressed: () {
-                final grid = widget.draw();
+                final grid = Lottery().draw(
+                  length: widget.length,
+                  specialLength: widget.specialLength,
+                );
                 setState(() {
                   numbersDrawn = grid.numbers.toList();
                   specialNumbersDrawn = grid.specialNumbers.toList();
-                  wasWinningGrid = widget.isWinning(grid);
+                  wasWinningGrid = Lottery().wasWinningGrid(grid);
                 });
               },
               child: const Text('Drawn'),
