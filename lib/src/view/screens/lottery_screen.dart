@@ -3,11 +3,22 @@ import 'package:lottery/lottery.dart';
 import 'package:lottery/src/view/widgets/lottery_random_pick.dart';
 
 class LotteryScreen extends StatelessWidget {
+  /// Background color of the screen.
   final Color? backgroundColor;
+
+  /// List of [LotteryOutputs] to be showed.
   final List<LotteryOutputs> outputs;
+
+  /// Length of numbers to be drawn.
   final int length;
+
+  /// Length of special numbers to be drawn.
   final int specialLength;
+
+  /// Decoration of numbers.
   final LotteryNumberItemDecoration numberDecoration;
+
+  /// Decoration of special numbers.
   final LotteryNumberItemDecoration specialNumberDecoration;
 
   const LotteryScreen({
