@@ -24,7 +24,9 @@ class LotteryNumberItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
-          shape: BoxShape.circle, color: decoration.backgroundColor),
+        shape: BoxShape.circle,
+        color: decoration.backgroundColor,
+      ),
       margin: const EdgeInsets.symmetric(horizontal: 5),
       constraints: const BoxConstraints(minWidth: 80),
       child: Padding(

@@ -1,9 +1,11 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lottery/lottery.dart';
 
 Future<void> _initializeLottery() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
-    pathCsv: 'assets\\data_test.csv',
+    pathCsv: 'assets/data_test.csv',
     fromAssets: true,
     numbersColumn: [1, 2, 3, 4],
     specialNumbersColumn: [5, 6, 7],
