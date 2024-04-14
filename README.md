@@ -23,8 +23,21 @@ each number being drawn.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+At the top of the application, you need to initialise the lottery with a 
+CSV file to be used as data.
+The ```pathCsv``` can be ```C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv```
+
+```dart
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Lottery.initialize(
+    pathCsv: 'assets\\data_test.csv',
+    numbersColumn: [1, 2, 3, 4],
+    specialNumbersColumn: [5, 6, 7],
+  );
+  runApp(const MyApp());
+}
+```
 
 ## Usage
 
