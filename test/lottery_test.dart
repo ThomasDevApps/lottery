@@ -34,9 +34,6 @@ void main() {
 
     test('Test initialize special number outputs', () async {
       final outputsExpected = {};
-      //for (int i = 1; i < 41; i++) {
-      //  outputsExpected[i.toString()] = 0;
-      //}
       outputsExpected[1] = 1;
       outputsExpected[35] = 1;
       outputsExpected[5] = 1;
