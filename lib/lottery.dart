@@ -51,9 +51,12 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: numbersColumn.map((e) => int.parse(fields[e - 1])).toSet(),
-          specialNumbers:
-              specialNumbersColumn.map((e) => int.parse(fields[e - 1])).toSet(),
+          numbers: numbersColumn.map((e) {
+            return int.parse(fields[e - 1]);
+          }).toSet(),
+          specialNumbers: specialNumbersColumn.map((e) {
+            return int.parse(fields[e - 1]);
+          }).toSet(),
         );
         _instance!.gridsFromCsv.add(grid);
       }
