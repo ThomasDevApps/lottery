@@ -4,7 +4,7 @@ import 'package:lottery/lottery.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
-    pathCsv: 'assets\\data_test.csv',
+    pathCsv: 'assets\\data_test.txt',
     fromAssets: true,
     numbersColumn: [1, 2, 3, 4],
     specialNumbersColumn: [5, 6, 7],
