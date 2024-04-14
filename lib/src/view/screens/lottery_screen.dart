@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
+import 'package:lottery/src/view/widgets/lottery_random_pick.dart';
 
 class LotteryScreen extends StatelessWidget {
   final Color? backgroundColor;
   final List<LotteryOutputs> outputs;
+
   const LotteryScreen({
     super.key,
     this.backgroundColor,
@@ -26,6 +28,14 @@ class LotteryScreen extends StatelessWidget {
                     .cast<Widget>()
                     .toList()
                     ._addSeparator(const SizedBox(height: 16)),
+              ),
+            ),
+            Expanded(
+              child: LotteryRandomPick(
+                draw: () {},
+                isWinning: (GridModel gridDrawn) {},
+                numberDecoration: null,
+                specialNumberDecoration: null,
               ),
             ),
           ],
