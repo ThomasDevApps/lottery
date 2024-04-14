@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+/// Decoration for each [LotteryNumberItem].
 class LotteryNumberItemDecoration {
   final Color backgroundColor;
   final Color? foregroundColor;

@@ -2,9 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
 
 class LotteryRandomPick extends StatefulWidget {
+  /// Length of numbers to be drawn.
   final int length;
+
+  /// Length of special numbers to be drawn.
   final int specialLength;
+
+  /// Decoration for numbers.
   final LotteryNumberItemDecoration numberDecoration;
+
+  /// Decoration for special numbers.
   final LotteryNumberItemDecoration specialNumberDecoration;
 
   const LotteryRandomPick({
