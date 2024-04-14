@@ -31,11 +31,13 @@ The ```pathCsv``` can be ```C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.
 ```dart
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  // Initialize the Lottery instance
   await Lottery.initialize(
-    pathCsv: 'assets\\data_test.csv',
-    numbersColumn: [1, 2, 3, 4],
-    specialNumbersColumn: [5, 6, 7],
+    pathCsv: 'assets\\data_test.csv', // Path to data
+    numbersColumn: [1, 2, 3, 4], // If the numbers are in the 1/2/3 and 4 column
+    specialNumbersColumn: [5, 6, 7], // If the special numbers are in the 5/6 and 7 column
   );
+  // Run the app
   runApp(const MyApp());
 }
 ```
