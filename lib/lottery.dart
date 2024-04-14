@@ -37,15 +37,11 @@ class Lottery {
     required String pathCsv,
     required List<int> numbersColumn,
     required List<int> specialNumbersColumn,
-    bool fromAssets = false,
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
     if (!_instance!._isInitialized) {
-      final resultCsv = await _CsvUtils.readNumbersCsv(
-        pathCsv,
-        fromAssets: fromAssets,
-      );
+      final resultCsv = await _CsvUtils.readNumbersCsv(pathCsv);
       // For each line from the csv
       for (var line in resultCsv) {
         // Split field
