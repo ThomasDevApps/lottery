@@ -25,6 +25,7 @@ each number being drawn.
 
 At the top of the application, you need to initialise the lottery with a 
 CSV file to be used as data.
+
 The ```pathCsv``` can be ```C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv```
 
 ```dart
