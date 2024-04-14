@@ -2,13 +2,27 @@ import 'dart:collection';
 
 import 'package:flutter/material.dart';
 
+/// Decoration for [LotteryOutputs].
 class LotteryOutputsDecoration {
+  /// Primary color of the container.
   final MaterialColor primary;
+
+  /// Color of each number foreground.
   final Color? foregroundColor;
+
+  /// Width of the container.
   final double? width;
+
+  /// Constraints of the container.
   final BoxConstraints constraints;
+
+  /// BorderRadius of the container.
   final BorderRadius? borderRadius;
+
+  /// The number of children in the cross axis.
   final int crossAxisCount;
+
+  /// The ratio of the cross-axis to the main-axis extent of each child.
   final double childAspectRatio;
 
   const LotteryOutputsDecoration({
@@ -23,8 +37,16 @@ class LotteryOutputsDecoration {
 }
 
 class LotteryOutputs extends StatelessWidget {
+  /// Outputs by the Lottery.
+  ///
+  /// - key is the number
+  /// - value is the number of times the key has been drawn.
   final Map<int, int> outputs;
+
+  /// Title of the container.
   final String title;
+
+  /// Decoration of the container.
   final LotteryOutputsDecoration decoration;
 
   const LotteryOutputs({
@@ -96,6 +118,7 @@ class LotteryOutputs extends StatelessWidget {
   }
 }
 
+/// Widget to display [outputsSorted] in the [GridView].
 class _OutputsGridView extends StatelessWidget {
   final ScrollController scrollController;
   final Map<int, int> outputsSorted;
@@ -155,6 +178,7 @@ class _OutputsGridView extends StatelessWidget {
 }
 
 extension _MapExtensionProbability on Map<int, int> {
+  /// Function to sort the map according with the value (not ascending).
   LinkedHashMap<int, int> _sort() {
     var sortedKeys = keys.toList(growable: false)
       ..sort((k1, k2) => this[k2]!.compareTo(this[k1]!));
