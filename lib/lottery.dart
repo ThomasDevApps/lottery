@@ -33,6 +33,7 @@ class Lottery {
     return _instance!;
   }
 
+  /// Function to initialize [_instance].
   static Future<void> initialize({
     required String pathCsv,
     required List<int> numbersColumn,
@@ -65,6 +66,7 @@ class Lottery {
   /// Function to initialize [numbers] and [specialNumbers]
   /// according with [gridsFromCsv].
   @visibleForTesting
+  @protected
   void initializeStatistics() {
     for (var grid in gridsFromCsv) {
       // Put each number in the numbers map
@@ -80,10 +82,13 @@ class Lottery {
     }
   }
 
+  /// Function to know if [gridModel] is a winning grid.
   bool wasWinningGrid(GridModel gridModel) {
     return gridsFromCsv.contains(gridModel);
   }
 
+  /// Function to drawn a random [GridModel] while taking into account
+  /// the probability of each number being drawn.
   GridModel draw({required int length, required int specialLength}) {
     return GridModel(
       numbers: drawRandomNumbers(numbers, length: length),
@@ -91,6 +96,7 @@ class Lottery {
     );
   }
 
+  @protected
   @visibleForTesting
   Set<int> drawRandomNumbers(Map<int, int> data, {required int length}) {
     final list = createListProbabilities(data);
@@ -104,7 +110,19 @@ class Lottery {
     return numbers;
   }
 
+  /// Function to create the list of probabilities.
+  ///
+  /// ```dart
+  /// final inputs = {
+  ///   4: 2,
+  ///   8: 4,
+  ///   12: 3,
+  /// };
+  ///
+  /// print(createListProbabilities(inputs)); // [4, 4, 8, 8, 8, 8, 12, 12, 12]
+  /// ```
   @visibleForTesting
+  @protected
   List<int> createListProbabilities(Map<int, int> inputs) {
     final List<int> list = [];
     inputs.forEach((key, value) {
