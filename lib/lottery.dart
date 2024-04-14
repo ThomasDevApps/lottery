@@ -34,28 +34,33 @@ class Lottery {
     return _instance!;
   }
 
-  Future<void> initialize({
+  static Future<void> initialize({
     required String pathCsv,
     required List<int> numbersColumn,
     required List<int> specialNumbersColumn,
+    bool fromAssets = false,
     Pattern pattern = ';',
   }) async {
-    if (!_isInitialized) {
-      final resultCsv = await _CsvUtils.readNumbersCsv(pathCsv);
+    _instance ??= Lottery._();
+    if (!_instance!._isInitialized) {
+      final resultCsv = await _CsvUtils.readNumbersCsv(
+        pathCsv,
+        fromAssets: fromAssets,
+      );
       // For each line from the csv
       for (var line in resultCsv) {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: numbersColumn.map((e) => int.parse(fields[e])).toSet(),
+          numbers: numbersColumn.map((e) => int.parse(fields[e - 1])).toSet(),
           specialNumbers:
-              specialNumbersColumn.map((e) => int.parse(fields[e])).toSet(),
+              specialNumbersColumn.map((e) => int.parse(fields[e - 1])).toSet(),
         );
-        gridsFromCsv.add(grid);
+        _instance!.gridsFromCsv.add(grid);
       }
-      initializeStatistics();
+      _instance!.initializeStatistics();
       // Set isInitialized to true
-      _isInitialized = true;
+      _instance!._isInitialized = true;
     }
   }
 

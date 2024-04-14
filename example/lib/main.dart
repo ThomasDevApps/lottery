@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Lottery.initialize(
+    pathCsv: 'assets\\data_test.csv',
+    fromAssets: true,
+    numbersColumn: [1, 2, 3, 4],
+    specialNumbersColumn: [5, 6, 7],
+  );
   runApp(const MyApp());
 }
 
@@ -17,16 +24,16 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: LotteryScreen(
-        outputs: const [
+        outputs: [
           LotteryOutputs(
-            outputs: {4: 16, 7: 2},
+            outputs: Lottery().numbers,
             title: 'Number',
-            decoration: LotteryOutputsDecoration(primary: Colors.blue),
+            decoration: const LotteryOutputsDecoration(primary: Colors.blue),
           ),
           LotteryOutputs(
-            outputs: {1: 15, 42: 10},
+            outputs: Lottery().specialNumbers,
             title: 'Special',
-            decoration: LotteryOutputsDecoration(primary: Colors.orange),
+            decoration: const LotteryOutputsDecoration(primary: Colors.orange),
           )
         ],
         length: 4,
