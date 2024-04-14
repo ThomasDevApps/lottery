@@ -28,6 +28,7 @@ CSV file to be used as data :
 
 ```dart
 Future<void> main() async {
+  // Add this line at the top
   WidgetsFlutterBinding.ensureInitialized();
   // Initialize the Lottery instance
   await Lottery.initialize(
