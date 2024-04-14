@@ -17,7 +17,15 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const LotteryScreen(),
+      home: const LotteryScreen(
+        outputs: [
+          LotteryOutputs(
+            outputs: {4: 16, 7: 2},
+            title: 'Number',
+            decoration: LotteryOutputsDecoration(primary: Colors.orange),
+          )
+        ],
+      ),
     );
   }
 }
