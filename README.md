@@ -25,7 +25,7 @@ each number being drawn.
 
 ![Alt text](./example/assets/preview.png?raw=true "Title")
 
-(Colors are customizable :))
+The design is customisable.
 
 ## Getting started
 
