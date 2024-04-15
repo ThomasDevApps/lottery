@@ -18,6 +18,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData.dark(
         useMaterial3: true,
@@ -28,21 +29,21 @@ class MyApp extends StatelessWidget {
           LotteryOutputs(
             outputs: Lottery().numbers,
             title: 'Number',
-            decoration: const LotteryOutputsDecoration(primary: Colors.blue),
+            decoration: const LotteryOutputsDecoration(primary: Colors.cyan),
           ),
           LotteryOutputs(
             outputs: Lottery().specialNumbers,
             title: 'Special',
-            decoration: const LotteryOutputsDecoration(primary: Colors.orange),
+            decoration: const LotteryOutputsDecoration(primary: Colors.purple),
           )
         ],
         numbersLength: 4,
         specialNumbersLength: 3,
         numberDecoration: LotteryNumberItemDecoration(
-          backgroundColor: Colors.blue,
+          backgroundColor: Colors.cyan,
         ),
         specialNumberDecoration: LotteryNumberItemDecoration(
-          backgroundColor: Colors.orange,
+          backgroundColor: Colors.purple,
         ),
       ),
     );

@@ -109,7 +109,6 @@ class LotteryOutputs extends StatelessWidget {
                   ),
                 ),
               ),
-              const SizedBox(height: 5),
             ],
           ),
         ),
