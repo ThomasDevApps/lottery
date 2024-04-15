@@ -23,6 +23,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       home: LotteryScreen(
+        cardColor: Colors.grey.shade900,
         outputs: [
           LotteryOutputs(
             outputs: Lottery().numbers,

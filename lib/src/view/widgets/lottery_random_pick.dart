@@ -14,12 +14,16 @@ class LotteryRandomPick extends StatefulWidget {
   /// Decoration for special numbers.
   final LotteryNumberItemDecoration specialNumberDecoration;
 
+  /// Color of the card.
+  final Color? cardColor;
+
   const LotteryRandomPick({
     super.key,
     required this.numbersLength,
     required this.specialNumbersLength,
     required this.numberDecoration,
     required this.specialNumberDecoration,
+    this.cardColor,
   });
 
   @override
@@ -54,6 +58,7 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: widget.cardColor,
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
