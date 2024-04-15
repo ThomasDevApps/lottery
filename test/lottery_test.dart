@@ -66,7 +66,6 @@ void main() {
       const gridModel = GridModel(
         numbers: {10, 13, 14, 25},
         specialNumbers: {1, 35, 5},
-        drawnAt: '15/04/2024',
       );
       expect(
         Lottery().wasWinningGrid(gridModel) == Lottery().gridsFromCsv.first,
