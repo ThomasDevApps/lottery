@@ -55,12 +55,15 @@ class LotteryScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: LotteryRandomPick(
-                numbersLength: numbersLength,
-                specialNumbersLength: specialNumbersLength,
-                numberDecoration: numberDecoration,
-                specialNumberDecoration: specialNumberDecoration,
-                cardColor: cardColor,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                child: LotteryRandomPick(
+                  numbersLength: numbersLength,
+                  specialNumbersLength: specialNumbersLength,
+                  numberDecoration: numberDecoration,
+                  specialNumberDecoration: specialNumberDecoration,
+                  cardColor: cardColor,
+                ),
               ),
             ),
           ],
