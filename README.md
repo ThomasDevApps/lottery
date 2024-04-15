@@ -11,7 +11,7 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
-![workflow](https://github.com/ThomasDevApps/lottery/actions/workflows/testing.yml/badge.svg)
+![testing workflow](https://github.com/ThomasDevApps/lottery/actions/workflows/testing.yml/badge.svg)
 
 # Lottery
 
