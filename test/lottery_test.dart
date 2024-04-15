@@ -8,6 +8,7 @@ Future<void> _initializeLottery() async {
     pathCsv: 'assets/data_test.csv',
     numberColumnIndexes: [0, 1, 2, 3],
     specialNumberColumnIndexes: [4, 5, 6],
+    dateTimeColumnIndex: 7,
   );
   addTearDown(Lottery().dispose);
 }
@@ -41,6 +42,13 @@ void main() {
       await _initializeLottery();
       expect(Lottery().specialNumbers, outputsExpected);
     });
+
+    test('Test initialize drawnAt for each grid', () async {
+      await _initializeLottery();
+      expect(Lottery().gridsFromCsv[0].drawnAt, '15/04/2024');
+      expect(Lottery().gridsFromCsv[1].drawnAt, '18/04/2024');
+      expect(Lottery().gridsFromCsv[2].drawnAt, '22/04/2024');
+    });
   });
 
   test('Test createListProbabilities', () async {
@@ -58,8 +66,12 @@ void main() {
       const gridModel = GridModel(
         numbers: {10, 13, 14, 25},
         specialNumbers: {1, 35, 5},
+        drawnAt: '15/04/2024',
       );
-      expect(Lottery().wasWinningGrid(gridModel), true);
+      expect(
+        Lottery().wasWinningGrid(gridModel) == Lottery().gridsFromCsv.first,
+        true,
+      );
     });
 
     test("Test that it's was NOT a winning grid", () async {
@@ -68,7 +80,7 @@ void main() {
         numbers: {36, 12, 41, 25},
         specialNumbers: {1, 35, 5},
       );
-      expect(Lottery().wasWinningGrid(gridModel), false);
+      expect(Lottery().wasWinningGrid(gridModel), null);
     });
   });
 }

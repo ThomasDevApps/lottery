@@ -117,13 +117,14 @@ class __$$GridModelImplCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$GridModelImpl implements _GridModel {
+class _$GridModelImpl extends _GridModel {
   const _$GridModelImpl(
       {required final Set<int> numbers,
       required final Set<int> specialNumbers,
       this.drawnAt})
       : _numbers = numbers,
-        _specialNumbers = specialNumbers;
+        _specialNumbers = specialNumbers,
+        super._();
 
   factory _$GridModelImpl.fromJson(Map<String, dynamic> json) =>
       _$$GridModelImplFromJson(json);
@@ -152,25 +153,6 @@ class _$GridModelImpl implements _GridModel {
     return 'GridModel(numbers: $numbers, specialNumbers: $specialNumbers, drawnAt: $drawnAt)';
   }
 
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$GridModelImpl &&
-            const DeepCollectionEquality().equals(other._numbers, _numbers) &&
-            const DeepCollectionEquality()
-                .equals(other._specialNumbers, _specialNumbers) &&
-            (identical(other.drawnAt, drawnAt) || other.drawnAt == drawnAt));
-  }
-
-  @JsonKey(ignore: true)
-  @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      const DeepCollectionEquality().hash(_numbers),
-      const DeepCollectionEquality().hash(_specialNumbers),
-      drawnAt);
-
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
@@ -185,11 +167,12 @@ class _$GridModelImpl implements _GridModel {
   }
 }
 
-abstract class _GridModel implements GridModel {
+abstract class _GridModel extends GridModel {
   const factory _GridModel(
       {required final Set<int> numbers,
       required final Set<int> specialNumbers,
       final String? drawnAt}) = _$GridModelImpl;
+  const _GridModel._() : super._();
 
   factory _GridModel.fromJson(Map<String, dynamic> json) =
       _$GridModelImpl.fromJson;

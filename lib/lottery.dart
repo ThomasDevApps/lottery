@@ -64,7 +64,9 @@ class Lottery {
               .map((e) => int.parse(fields[e]))
               .toSet(),
           drawnAt: dateTimeColumnIndex != null
-              ? fields.elementAt(dateTimeColumnIndex)
+              ? (fields.elementAt(dateTimeColumnIndex) as String)
+                  .split('\r')
+                  .first
               : null,
         );
         _instance!.gridsFromCsv.add(grid);
