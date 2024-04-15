@@ -16,9 +16,6 @@ void main() {
   group('Test initialize', () {
     test('Test initialize number outputs', () async {
       final outputsExpected = {};
-      //for (int i = 1; i < 41; i++) {
-      //  outputsExpected[i.toString()] = 0;
-      //}
       outputsExpected[10] = 3;
       outputsExpected[13] = 1;
       outputsExpected[14] = 1;
