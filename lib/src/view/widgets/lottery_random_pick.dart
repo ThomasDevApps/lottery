@@ -3,10 +3,10 @@ import 'package:lottery/lottery.dart';
 
 class LotteryRandomPick extends StatefulWidget {
   /// Length of numbers to be drawn.
-  final int length;
+  final int numbersLength;
 
   /// Length of special numbers to be drawn.
-  final int specialLength;
+  final int specialNumbersLength;
 
   /// Decoration for numbers.
   final LotteryNumberItemDecoration numberDecoration;
@@ -14,12 +14,16 @@ class LotteryRandomPick extends StatefulWidget {
   /// Decoration for special numbers.
   final LotteryNumberItemDecoration specialNumberDecoration;
 
+  /// Color of the card.
+  final Color? cardColor;
+
   const LotteryRandomPick({
     super.key,
-    required this.length,
-    required this.specialLength,
+    required this.numbersLength,
+    required this.specialNumbersLength,
     required this.numberDecoration,
     required this.specialNumberDecoration,
+    this.cardColor,
   });
 
   @override
@@ -54,6 +58,7 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: widget.cardColor,
       child: Padding(
         padding: const EdgeInsets.all(24.0),
         child: Column(
@@ -62,8 +67,8 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
             ElevatedButton(
               onPressed: () {
                 final grid = Lottery().draw(
-                  length: widget.length,
-                  specialLength: widget.specialLength,
+                  length: widget.numbersLength,
+                  specialLength: widget.specialNumbersLength,
                 );
                 setState(() {
                   numbersDrawn = grid.numbers.toList();
