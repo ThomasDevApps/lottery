@@ -25,6 +25,8 @@ each number being drawn.
 
 ![Alt text](./example/assets/preview.png?raw=true "Title")
 
+(Colors are customizable :))
+
 ## Getting started
 
 At the top of the application, you need to initialise the lottery with a 
