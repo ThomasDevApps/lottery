@@ -33,7 +33,7 @@ class LotteryRandomPick extends StatefulWidget {
 class _LotteryRandomPickState extends State<LotteryRandomPick> {
   List<int>? numbersDrawn;
   List<int>? specialNumbersDrawn;
-  bool? wasWinningGrid;
+  GridModel? winningGrid;
 
   Widget displayGridModel() {
     return Row(
@@ -73,7 +73,7 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
                 setState(() {
                   numbersDrawn = grid.numbers.toList();
                   specialNumbersDrawn = grid.specialNumbers.toList();
-                  wasWinningGrid = Lottery().wasWinningGrid(grid);
+                  winningGrid = Lottery().wasWinningGrid(grid);
                 });
               },
               child: const Text('Drawn'),
@@ -84,11 +84,11 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
                 child: Column(
                   children: [
                     displayGridModel(),
-                    if (wasWinningGrid!) ...[
+                    if (winningGrid != null) ...[
                       const SizedBox(height: 32),
-                      const Text(
-                        'Grille gagnante !',
-                        style: TextStyle(color: Colors.amber),
+                      Text(
+                        'Grille gagnante ! (TAS le ${winningGrid?.drawnAt.toString() ?? '??'}',
+                        style: const TextStyle(color: Colors.amber),
                       ),
                     ],
                   ],

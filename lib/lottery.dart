@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:lottery/src/models/grid_model/grid_model.dart';
@@ -38,6 +39,7 @@ class Lottery {
     required String pathCsv,
     required List<int> columnIndexes,
     required List<int> specialColumnIndexes,
+    int? dateTimeIndex,
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
@@ -48,12 +50,12 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: columnIndexes.map((e) {
-            return int.parse(fields[e]);
-          }).toSet(),
-          specialNumbers: specialColumnIndexes.map((e) {
-            return int.parse(fields[e]);
-          }).toSet(),
+          numbers: columnIndexes.map((e) => int.parse(fields[e])).toSet(),
+          specialNumbers:
+              specialColumnIndexes.map((e) => int.parse(fields[e])).toSet(),
+          drawnAt: dateTimeIndex != null
+              ? DateTime.parse(fields[dateTimeIndex])
+              : null,
         );
         _instance!.gridsFromCsv.add(grid);
       }
@@ -83,8 +85,11 @@ class Lottery {
   }
 
   /// Function to know if [gridModel] is a winning grid.
-  bool wasWinningGrid(GridModel gridModel) {
-    return gridsFromCsv.contains(gridModel);
+  ///
+  /// If it's the case it will return the grid winner from [gridsFromCsv],
+  /// otherwise it will return null.
+  GridModel? wasWinningGrid(GridModel gridModel) {
+    return gridsFromCsv.firstWhereOrNull((element) => element == gridModel);
   }
 
   /// Function to drawn a random [GridModel] while taking into account
