@@ -35,11 +35,20 @@ class Lottery {
   }
 
   /// Function to initialize [_instance].
+  ///
+  /// - [numberColumnIndexes] is a list containing all the indexes
+  /// of the columns containing the numbers.
+  ///
+  /// - [specialNumberColumnIndexes] is a list containing all the indexes
+  /// of the columns containing the special numbers.
+  ///
+  /// - [dateTimeColumnIndex] is the index of the column containing
+  /// the date of the draw for the grid (example : 15/04/2024)
   static Future<void> initialize({
     required String pathCsv,
-    required List<int> columnIndexes,
-    required List<int> specialColumnIndexes,
-    int? dateTimeIndex,
+    required List<int> numberColumnIndexes,
+    required List<int> specialNumberColumnIndexes,
+    int? dateTimeColumnIndex,
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
@@ -50,11 +59,12 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: columnIndexes.map((e) => int.parse(fields[e])).toSet(),
-          specialNumbers:
-              specialColumnIndexes.map((e) => int.parse(fields[e])).toSet(),
-          drawnAt: dateTimeIndex != null
-              ? DateTime.parse(fields[dateTimeIndex])
+          numbers: numberColumnIndexes.map((e) => int.parse(fields[e])).toSet(),
+          specialNumbers: specialNumberColumnIndexes
+              .map((e) => int.parse(fields[e]))
+              .toSet(),
+          drawnAt: dateTimeColumnIndex != null
+              ? fields.elementAt(dateTimeColumnIndex)
               : null,
         );
         _instance!.gridsFromCsv.add(grid);

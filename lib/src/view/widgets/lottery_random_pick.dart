@@ -87,7 +87,7 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
                     if (winningGrid != null) ...[
                       const SizedBox(height: 32),
                       Text(
-                        'Grille gagnante ! (TAS le ${winningGrid?.drawnAt.toString() ?? '??'}',
+                        'Grille gagnante ! (TAS le ${winningGrid?.drawnAt ?? '??'})',
                         style: const TextStyle(color: Colors.amber),
                       ),
                     ],

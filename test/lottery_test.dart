@@ -6,8 +6,8 @@ Future<void> _initializeLottery() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
     pathCsv: 'assets/data_test.csv',
-    columnIndexes: [0, 1, 2, 3],
-    specialColumnIndexes: [4, 5, 6],
+    numberColumnIndexes: [0, 1, 2, 3],
+    specialNumberColumnIndexes: [4, 5, 6],
   );
   addTearDown(Lottery().dispose);
 }

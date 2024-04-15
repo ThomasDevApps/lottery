@@ -8,7 +8,7 @@ class GridModel with _$GridModel {
   const factory GridModel({
     required Set<int> numbers,
     required Set<int> specialNumbers,
-    DateTime? drawnAt,
+    String? drawnAt,
   }) = _GridModel;
 
   factory GridModel.fromJson(Map<String, dynamic> json) =>

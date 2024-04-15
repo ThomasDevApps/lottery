@@ -22,7 +22,7 @@ GridModel _$GridModelFromJson(Map<String, dynamic> json) {
 mixin _$GridModel {
   Set<int> get numbers => throw _privateConstructorUsedError;
   Set<int> get specialNumbers => throw _privateConstructorUsedError;
-  DateTime? get drawnAt => throw _privateConstructorUsedError;
+  String? get drawnAt => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -35,7 +35,7 @@ abstract class $GridModelCopyWith<$Res> {
   factory $GridModelCopyWith(GridModel value, $Res Function(GridModel) then) =
       _$GridModelCopyWithImpl<$Res, GridModel>;
   @useResult
-  $Res call({Set<int> numbers, Set<int> specialNumbers, DateTime? drawnAt});
+  $Res call({Set<int> numbers, Set<int> specialNumbers, String? drawnAt});
 }
 
 /// @nodoc
@@ -67,7 +67,7 @@ class _$GridModelCopyWithImpl<$Res, $Val extends GridModel>
       drawnAt: freezed == drawnAt
           ? _value.drawnAt
           : drawnAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
     ) as $Val);
   }
 }
@@ -80,7 +80,7 @@ abstract class _$$GridModelImplCopyWith<$Res>
       __$$GridModelImplCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({Set<int> numbers, Set<int> specialNumbers, DateTime? drawnAt});
+  $Res call({Set<int> numbers, Set<int> specialNumbers, String? drawnAt});
 }
 
 /// @nodoc
@@ -110,7 +110,7 @@ class __$$GridModelImplCopyWithImpl<$Res>
       drawnAt: freezed == drawnAt
           ? _value.drawnAt
           : drawnAt // ignore: cast_nullable_to_non_nullable
-              as DateTime?,
+              as String?,
     ));
   }
 }
@@ -145,7 +145,7 @@ class _$GridModelImpl implements _GridModel {
   }
 
   @override
-  final DateTime? drawnAt;
+  final String? drawnAt;
 
   @override
   String toString() {
@@ -189,7 +189,7 @@ abstract class _GridModel implements GridModel {
   const factory _GridModel(
       {required final Set<int> numbers,
       required final Set<int> specialNumbers,
-      final DateTime? drawnAt}) = _$GridModelImpl;
+      final String? drawnAt}) = _$GridModelImpl;
 
   factory _GridModel.fromJson(Map<String, dynamic> json) =
       _$GridModelImpl.fromJson;
@@ -199,7 +199,7 @@ abstract class _GridModel implements GridModel {
   @override
   Set<int> get specialNumbers;
   @override
-  DateTime? get drawnAt;
+  String? get drawnAt;
   @override
   @JsonKey(ignore: true)
   _$$GridModelImplCopyWith<_$GridModelImpl> get copyWith =>
