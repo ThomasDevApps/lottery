@@ -4,6 +4,7 @@ import 'dart:convert';
 import 'dart:io';
 import 'dart:math';
 
+import 'package:collection/collection.dart';
 import 'package:csv/csv.dart';
 import 'package:flutter/material.dart';
 import 'package:lottery/src/models/grid_model/grid_model.dart';
@@ -34,10 +35,20 @@ class Lottery {
   }
 
   /// Function to initialize [_instance].
+  ///
+  /// - [numberColumnIndexes] is a list containing all the indexes
+  /// of the columns containing the numbers.
+  ///
+  /// - [specialNumberColumnIndexes] is a list containing all the indexes
+  /// of the columns containing the special numbers.
+  ///
+  /// - [dateTimeColumnIndex] is the index of the column containing
+  /// the date of the draw for the grid (example : 15/04/2024)
   static Future<void> initialize({
     required String pathCsv,
-    required List<int> numbersColumn,
-    required List<int> specialNumbersColumn,
+    required List<int> numberColumnIndexes,
+    required List<int> specialNumberColumnIndexes,
+    int? dateTimeColumnIndex,
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
@@ -48,12 +59,15 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: numbersColumn.map((e) {
-            return int.parse(fields[e - 1]);
-          }).toSet(),
-          specialNumbers: specialNumbersColumn.map((e) {
-            return int.parse(fields[e - 1]);
-          }).toSet(),
+          numbers: numberColumnIndexes.map((e) => int.parse(fields[e])).toSet(),
+          specialNumbers: specialNumberColumnIndexes
+              .map((e) => int.parse(fields[e]))
+              .toSet(),
+          drawnAt: dateTimeColumnIndex != null
+              ? (fields.elementAt(dateTimeColumnIndex) as String)
+                  .split('\r')
+                  .first
+              : null,
         );
         _instance!.gridsFromCsv.add(grid);
       }
@@ -83,8 +97,11 @@ class Lottery {
   }
 
   /// Function to know if [gridModel] is a winning grid.
-  bool wasWinningGrid(GridModel gridModel) {
-    return gridsFromCsv.contains(gridModel);
+  ///
+  /// If it's the case it will return the grid winner from [gridsFromCsv],
+  /// otherwise it will return null.
+  GridModel? wasWinningGrid(GridModel gridModel) {
+    return gridsFromCsv.firstWhereOrNull((element) => element == gridModel);
   }
 
   /// Function to drawn a random [GridModel] while taking into account

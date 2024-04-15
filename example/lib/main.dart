@@ -5,8 +5,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
     pathCsv: 'assets\\data_test.csv',
-    numbersColumn: [1, 2, 3, 4],
-    specialNumbersColumn: [5, 6, 7],
+    numberColumnIndexes: [0, 1, 2, 3],
+    specialNumberColumnIndexes: [4, 5, 6],
   );
   runApp(const MyApp());
 }

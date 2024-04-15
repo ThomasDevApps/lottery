@@ -1,12 +1,13 @@
 name: lottery
 description: "A new Flutter project."
-version: 0.0.4
+version: 0.0.5
 
 environment:
   sdk: '>=3.3.3 <4.0.0'
   flutter: ">=1.17.0"
 
 dependencies:
+  collection: ^1.18.0
   csv: ^6.0.0
   flutter:
     sdk: flutter
