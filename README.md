@@ -21,6 +21,10 @@ and the Flutter guide for
 each number being drawn.
 - Find out if the grid drawn at random is a winning grid
 
+## Preview
+
+![Alt text](./example/assets/preview.png?raw=true "Title")
+
 ## Getting started
 
 At the top of the application, you need to initialise the lottery with a 
