@@ -36,8 +36,8 @@ class Lottery {
   /// Function to initialize [_instance].
   static Future<void> initialize({
     required String pathCsv,
-    required List<int> numbersColumn,
-    required List<int> specialNumbersColumn,
+    required List<int> columnIndexes,
+    required List<int> specialColumnIndexes,
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
@@ -48,11 +48,11 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: numbersColumn.map((e) {
-            return int.parse(fields[e - 1]);
+          numbers: columnIndexes.map((e) {
+            return int.parse(fields[e]);
           }).toSet(),
-          specialNumbers: specialNumbersColumn.map((e) {
-            return int.parse(fields[e - 1]);
+          specialNumbers: specialColumnIndexes.map((e) {
+            return int.parse(fields[e]);
           }).toSet(),
         );
         _instance!.gridsFromCsv.add(grid);
