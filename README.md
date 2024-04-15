@@ -11,6 +11,10 @@ and the Flutter guide for
 [developing packages and plugins](https://flutter.dev/developing-packages).
 -->
 
+<p>
+    <a href=""><img src="https://github.com/ThomasDevApps/lottery/blob/main/.github/workflows/testing.yml/badge.svg"/></a>
+</p>
+
 # Lottery
 
 ## Features
