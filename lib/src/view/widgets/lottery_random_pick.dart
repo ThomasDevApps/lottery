@@ -35,26 +35,6 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
   List<int>? specialNumbersDrawn;
   GridModel? winningGrid;
 
-  Widget displayGridModel() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ...numbersDrawn!.map(
-          (e) => LotteryNumberItem(
-            number: e,
-            decoration: widget.numberDecoration,
-          ),
-        ),
-        ...specialNumbersDrawn!.map(
-          (e) => LotteryNumberItem(
-            number: e,
-            decoration: widget.specialNumberDecoration,
-          ),
-        ),
-      ],
-    );
-  }
-
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -85,7 +65,12 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
                   padding: const EdgeInsets.only(top: 24.0),
                   child: Column(
                     children: [
-                      displayGridModel(),
+                      GridItem.fromNumbers(
+                        numbers: numbersDrawn!,
+                        specialNumbers: specialNumbersDrawn!,
+                        numberDecoration: widget.numberDecoration,
+                        specialNumberDecoration: widget.specialNumberDecoration,
+                      ),
                       if (winningGrid != null) ...[
                         const SizedBox(height: 32),
                         Text(
