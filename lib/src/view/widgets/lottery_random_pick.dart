@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
-import 'package:lottery/src/view/widgets/grid_item.dart';
+import 'package:lottery/src/view/items/grid_item.dart';
 
 class LotteryRandomPick extends StatefulWidget {
   /// Length of numbers to be drawn.

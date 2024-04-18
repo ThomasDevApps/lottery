@@ -10,8 +10,8 @@ import 'package:flutter/material.dart';
 import 'package:lottery/src/models/grid_model/grid_model.dart';
 
 export 'src/models/grid_model/grid_model.dart';
+export 'src/view/items/lottery_number_item.dart';
 export 'src/view/screens/lottery_screen.dart';
-export 'src/view/widgets/lottery_number_item.dart';
 export 'src/view/widgets/lottery_outputs.dart';
 
 part 'src/core/utils/csv_utils.dart';
