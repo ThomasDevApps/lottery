@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
+import 'package:lottery/src/view/widgets/lottery_last_grid_drawn.dart';
 import 'package:lottery/src/view/widgets/lottery_random_pick.dart';
 
 class LotteryScreen extends StatelessWidget {
@@ -57,12 +58,21 @@ class LotteryScreen extends StatelessWidget {
             Expanded(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 5.0),
-                child: LotteryRandomPick(
-                  numbersLength: numbersLength,
-                  specialNumbersLength: specialNumbersLength,
-                  numberDecoration: numberDecoration,
-                  specialNumberDecoration: specialNumberDecoration,
-                  cardColor: cardColor,
+                child: Column(
+                  children: [
+                    LotteryLastGridDrawn(
+                      numberDecoration: numberDecoration,
+                      specialNumberDecoration: specialNumberDecoration,
+                      cardColor: cardColor,
+                    ),
+                    LotteryRandomPick(
+                      numbersLength: numbersLength,
+                      specialNumbersLength: specialNumbersLength,
+                      numberDecoration: numberDecoration,
+                      specialNumberDecoration: specialNumberDecoration,
+                      cardColor: cardColor,
+                    ),
+                  ],
                 ),
               ),
             ),

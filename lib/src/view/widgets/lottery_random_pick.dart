@@ -57,44 +57,47 @@ class _LotteryRandomPickState extends State<LotteryRandomPick> {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: widget.cardColor,
-      child: Padding(
-        padding: const EdgeInsets.all(24.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            ElevatedButton(
-              onPressed: () {
-                final grid = Lottery().draw(
-                  length: widget.numbersLength,
-                  specialLength: widget.specialNumbersLength,
-                );
-                setState(() {
-                  numbersDrawn = grid.numbers.toList();
-                  specialNumbersDrawn = grid.specialNumbers.toList();
-                  winningGrid = Lottery().wasWinningGrid(grid);
-                });
-              },
-              child: const Text('Drawn'),
-            ),
-            if (numbersDrawn != null && specialNumbersDrawn != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 24.0),
-                child: Column(
-                  children: [
-                    displayGridModel(),
-                    if (winningGrid != null) ...[
-                      const SizedBox(height: 32),
-                      Text(
-                        'Grille gagnante ! (TAS le ${winningGrid?.drawnAt ?? '??'})',
-                        style: const TextStyle(color: Colors.amber),
-                      ),
-                    ],
-                  ],
-                ),
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Card(
+        color: widget.cardColor,
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  final grid = Lottery().draw(
+                    length: widget.numbersLength,
+                    specialLength: widget.specialNumbersLength,
+                  );
+                  setState(() {
+                    numbersDrawn = grid.numbers.toList();
+                    specialNumbersDrawn = grid.specialNumbers.toList();
+                    winningGrid = Lottery().wasWinningGrid(grid);
+                  });
+                },
+                child: const Text('Drawn'),
               ),
-          ],
+              if (numbersDrawn != null && specialNumbersDrawn != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 24.0),
+                  child: Column(
+                    children: [
+                      displayGridModel(),
+                      if (winningGrid != null) ...[
+                        const SizedBox(height: 32),
+                        Text(
+                          'Grille gagnante ! (TAS le ${winningGrid?.drawnAt ?? '??'})',
+                          style: const TextStyle(color: Colors.amber),
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );

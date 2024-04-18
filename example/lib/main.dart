@@ -7,6 +7,7 @@ Future<void> main() async {
     pathCsv: 'assets\\data_test.csv',
     numberColumnIndexes: [0, 1, 2, 3],
     specialNumberColumnIndexes: [4, 5, 6],
+    dateTimeColumnIndex: 7,
   );
   runApp(const MyApp());
 }
