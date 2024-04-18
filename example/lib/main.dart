@@ -29,12 +29,12 @@ class MyApp extends StatelessWidget {
         outputs: [
           LotteryOutputs(
             outputs: Lottery().numbers,
-            title: 'Number',
+            title: 'Numbers',
             decoration: const LotteryOutputsDecoration(primary: Colors.cyan),
           ),
           LotteryOutputs(
             outputs: Lottery().specialNumbers,
-            title: 'Special',
+            title: 'Special numbers',
             decoration: const LotteryOutputsDecoration(primary: Colors.purple),
           )
         ],
