@@ -23,21 +23,24 @@ class LotteryNumberItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        shape: BoxShape.circle,
-        color: decoration.backgroundColor,
-      ),
-      margin: const EdgeInsets.symmetric(horizontal: 5),
-      width: 80,
-      child: Padding(
-        padding: const EdgeInsets.all(15),
-        child: Center(
-          child: Text(
-            number.toString(),
-            style: TextStyle(
-              fontSize: 18,
-              color: decoration.foregroundColor,
+    return FittedBox(
+      fit: BoxFit.scaleDown,
+      child: Container(
+        decoration: BoxDecoration(
+          shape: BoxShape.circle,
+          color: decoration.backgroundColor,
+        ),
+        margin: const EdgeInsets.symmetric(horizontal: 5),
+        width: 80,
+        child: Padding(
+          padding: const EdgeInsets.all(15),
+          child: Center(
+            child: Text(
+              number.toString(),
+              style: TextStyle(
+                fontSize: 18,
+                color: decoration.foregroundColor,
+              ),
             ),
           ),
         ),

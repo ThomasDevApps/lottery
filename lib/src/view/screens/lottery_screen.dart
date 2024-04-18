@@ -59,11 +59,19 @@ class LotteryScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      LotteryLastGridDrawn(
-                        numberDecoration: numberDecoration,
-                        specialNumberDecoration: specialNumberDecoration,
-                        cardColor: cardColor,
+                      Row(
+                        children: [
+                          const Expanded(child: SizedBox.shrink()),
+                          Expanded(
+                            child: LotteryLastGridDrawn(
+                              numberDecoration: numberDecoration,
+                              specialNumberDecoration: specialNumberDecoration,
+                              cardColor: cardColor,
+                            ),
+                          ),
+                        ],
                       ),
+                      const SizedBox(height: 8),
                       LotteryRandomPick(
                         numbersLength: numbersLength,
                         specialNumbersLength: specialNumbersLength,
