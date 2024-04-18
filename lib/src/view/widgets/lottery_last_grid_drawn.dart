@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
-import 'package:lottery/src/view/items/grid_item.dart';
 
 class LotteryLastGridDrawn extends StatelessWidget {
   final Color? cardColor;

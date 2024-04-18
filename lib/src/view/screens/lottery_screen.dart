@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
-import 'package:lottery/src/view/widgets/lottery_last_grid_drawn.dart';
-import 'package:lottery/src/view/widgets/lottery_random_pick.dart';
 
 class LotteryScreen extends StatelessWidget {
   /// Background color of the screen.
