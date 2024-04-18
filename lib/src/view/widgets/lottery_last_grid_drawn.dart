@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
+import 'package:lottery/src/view/widgets/grid_item.dart';
 
 class LotteryLastGridDrawn extends StatelessWidget {
   final Color? cardColor;
@@ -32,22 +33,10 @@ class LotteryLastGridDrawn extends StatelessWidget {
               style: Theme.of(context).textTheme.titleMedium,
             ),
             const SizedBox(height: 16),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ...gridModel.numbers.map(
-                  (e) => LotteryNumberItem(
-                    number: e,
-                    decoration: numberDecoration,
-                  ),
-                ),
-                ...gridModel.specialNumbers.map(
-                  (e) => LotteryNumberItem(
-                    number: e,
-                    decoration: specialNumberDecoration,
-                  ),
-                ),
-              ],
+            GridItem(
+              gridModel: gridModel,
+              numberDecoration: numberDecoration,
+              specialNumberDecoration: specialNumberDecoration,
             ),
           ],
         ),
