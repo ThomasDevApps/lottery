@@ -29,7 +29,7 @@ class LotteryNumberItem extends StatelessWidget {
         color: decoration.backgroundColor,
       ),
       margin: const EdgeInsets.symmetric(horizontal: 5),
-      constraints: const BoxConstraints(minWidth: 80),
+      width: 80,
       child: Padding(
         padding: const EdgeInsets.all(15),
         child: Center(

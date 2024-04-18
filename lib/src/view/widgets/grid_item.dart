@@ -29,22 +29,28 @@ class GridItem extends StatelessWidget {
     final numbers = gridModel?.numbers ?? this.numbers!;
     final specialNumbers = gridModel?.specialNumbers ?? this.specialNumbers!;
 
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        ...numbers.map(
-          (e) => LotteryNumberItem(
-            number: e,
-            decoration: numberDecoration,
+    return SizedBox(
+      width: MediaQuery.of(context).size.width,
+      child: Wrap(
+        alignment: WrapAlignment.center,
+        runAlignment: WrapAlignment.center,
+        runSpacing: 8.0,
+        direction: Axis.horizontal,
+        children: [
+          ...numbers.map(
+            (e) => LotteryNumberItem(
+              number: e,
+              decoration: numberDecoration,
+            ),
           ),
-        ),
-        ...specialNumbers.map(
-          (e) => LotteryNumberItem(
-            number: e,
-            decoration: specialNumberDecoration,
+          ...specialNumbers.map(
+            (e) => LotteryNumberItem(
+              number: e,
+              decoration: specialNumberDecoration,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
