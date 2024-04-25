@@ -8,8 +8,11 @@ class LotteryScreen extends StatelessWidget {
   /// Color of the card.
   final Color? cardColor;
 
-  /// List of [LotteryOutputs] to be showed.
-  final List<LotteryOutputs> outputs;
+  /// Number outputs.
+  final LotteryOutputs numberOutputs;
+
+  /// Special number outputs.
+  final LotteryOutputs specialNumberOutputs;
 
   /// Length of numbers to be drawn.
   final int numbersLength;
@@ -27,7 +30,8 @@ class LotteryScreen extends StatelessWidget {
     super.key,
     this.backgroundColor,
     this.cardColor,
-    required this.outputs,
+    required this.numberOutputs,
+    required this.specialNumberOutputs,
     required this.numbersLength,
     required this.specialNumbersLength,
     required this.numberDecoration,
@@ -44,7 +48,7 @@ class LotteryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(width: 8.0),
-            Expanded(child: outputs.first),
+            Expanded(child: numberOutputs),
             Expanded(
               flex: 3,
               child: Padding(
@@ -70,7 +74,7 @@ class LotteryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(child: outputs.last),
+            Expanded(child: specialNumberOutputs),
             const SizedBox(width: 8.0),
           ],
         ),
