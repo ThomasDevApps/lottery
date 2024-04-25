@@ -39,37 +39,23 @@ class LotteryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                children: outputs
-                    .map((e) => Expanded(child: e))
-                    .cast<Widget>()
-                    .toList()
-                    ._addSeparator(const SizedBox(height: 16)),
-              ),
-            ),
+            const SizedBox(width: 8.0),
+            Expanded(child: outputs.first),
             Expanded(
+              flex: 3,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
-                      Row(
-                        children: [
-                          const Expanded(child: SizedBox.shrink()),
-                          Expanded(
-                            child: LotteryLastGridDrawn(
-                              numberDecoration: numberDecoration,
-                              specialNumberDecoration: specialNumberDecoration,
-                              cardColor: cardColor,
-                            ),
-                          ),
-                        ],
+                      LotteryLastGridDrawn(
+                        numberDecoration: numberDecoration,
+                        specialNumberDecoration: specialNumberDecoration,
+                        cardColor: cardColor,
                       ),
                       const SizedBox(height: 8),
                       LotteryRandomPick(
@@ -84,6 +70,8 @@ class LotteryScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Expanded(child: outputs.last),
+            const SizedBox(width: 8.0),
           ],
         ),
       ),

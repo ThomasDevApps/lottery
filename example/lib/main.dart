@@ -23,7 +23,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(
         useMaterial3: true,
-      ),
+      ).copyWith(cardColor: Colors.grey.shade900),
       home: LotteryScreen(
         cardColor: Colors.grey.shade900,
         outputs: [
