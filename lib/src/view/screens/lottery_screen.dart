@@ -78,18 +78,3 @@ class LotteryScreen extends StatelessWidget {
     );
   }
 }
-
-extension _ListExtension<E> on List<E> {
-  /// Function to add [separator] between each item of the list.
-  List<E> _addSeparator(E separator) {
-    final copy = List<E>.from(this);
-    if (copy.length > 1) {
-      for (var item in this) {
-        if (item != last) {
-          copy.insert(copy.indexOf(item) + 1, separator);
-        }
-      }
-    }
-    return copy;
-  }
-}
