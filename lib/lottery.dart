@@ -14,7 +14,7 @@ export 'src/view/items/grid_item.dart';
 export 'src/view/items/lottery_number_item.dart';
 export 'src/view/screens/lottery_screen.dart';
 export 'src/view/widgets/lottery_last_grid_drawn.dart';
-export 'src/view/widgets/lottery_outputs.dart';
+export 'src/view/widgets/lottery_output.dart';
 export 'src/view/widgets/lottery_random_pick.dart';
 
 part 'src/core/utils/csv_utils.dart';

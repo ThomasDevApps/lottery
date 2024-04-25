@@ -65,7 +65,7 @@ class LotteryOutputs extends StatelessWidget {
       constraints: decoration.constraints,
       width: decoration.width ?? MediaQuery.of(context).size.width / 5.5,
       child: Card(
-        color: decoration.primary.shade700,
+        color: Theme.of(context).cardTheme.color ?? Theme.of(context).cardColor,
         shape: RoundedRectangleBorder(
           borderRadius: decoration.borderRadius ?? BorderRadius.circular(10),
         ),
@@ -139,7 +139,7 @@ class _OutputsGridView extends StatelessWidget {
         childAspectRatio: decoration.childAspectRatio,
       ),
       itemBuilder: (context, index) => Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
         color: decoration.primary.shade600,
         elevation: 0,
         child: Padding(

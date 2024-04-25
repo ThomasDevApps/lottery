@@ -8,8 +8,11 @@ class LotteryScreen extends StatelessWidget {
   /// Color of the card.
   final Color? cardColor;
 
-  /// List of [LotteryOutputs] to be showed.
-  final List<LotteryOutputs> outputs;
+  /// Number outputs.
+  final LotteryOutputs numberOutputs;
+
+  /// Special number outputs.
+  final LotteryOutputs specialNumberOutputs;
 
   /// Length of numbers to be drawn.
   final int numbersLength;
@@ -27,7 +30,8 @@ class LotteryScreen extends StatelessWidget {
     super.key,
     this.backgroundColor,
     this.cardColor,
-    required this.outputs,
+    required this.numberOutputs,
+    required this.specialNumberOutputs,
     required this.numbersLength,
     required this.specialNumbersLength,
     required this.numberDecoration,
@@ -39,23 +43,16 @@ class LotteryScreen extends StatelessWidget {
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Padding(
-        padding: const EdgeInsets.symmetric(vertical: 20),
+        padding: const EdgeInsets.symmetric(vertical: 16),
         child: Row(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 8),
-              child: Column(
-                children: outputs
-                    .map((e) => Expanded(child: e))
-                    .cast<Widget>()
-                    .toList()
-                    ._addSeparator(const SizedBox(height: 16)),
-              ),
-            ),
+            const SizedBox(width: 8.0),
+            Expanded(child: numberOutputs),
             Expanded(
+              flex: 3,
               child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 5.0),
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
@@ -64,6 +61,7 @@ class LotteryScreen extends StatelessWidget {
                         specialNumberDecoration: specialNumberDecoration,
                         cardColor: cardColor,
                       ),
+                      const SizedBox(height: 8),
                       LotteryRandomPick(
                         numbersLength: numbersLength,
                         specialNumbersLength: specialNumbersLength,
@@ -76,24 +74,11 @@ class LotteryScreen extends StatelessWidget {
                 ),
               ),
             ),
+            Expanded(child: specialNumberOutputs),
+            const SizedBox(width: 8.0),
           ],
         ),
       ),
     );
-  }
-}
-
-extension _ListExtension<E> on List<E> {
-  /// Function to add [separator] between each item of the list.
-  List<E> _addSeparator(E separator) {
-    final copy = List<E>.from(this);
-    if (copy.length > 1) {
-      for (var item in this) {
-        if (item != last) {
-          copy.insert(copy.indexOf(item) + 1, separator);
-        }
-      }
-    }
-    return copy;
   }
 }

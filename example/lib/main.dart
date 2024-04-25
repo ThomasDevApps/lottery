@@ -23,21 +23,19 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       theme: ThemeData.dark(
         useMaterial3: true,
-      ),
+      ).copyWith(cardColor: Colors.grey.shade900),
       home: LotteryScreen(
         cardColor: Colors.grey.shade900,
-        outputs: [
-          LotteryOutputs(
-            outputs: Lottery().numbers,
-            title: 'Numbers',
-            decoration: const LotteryOutputsDecoration(primary: Colors.cyan),
-          ),
-          LotteryOutputs(
-            outputs: Lottery().specialNumbers,
-            title: 'Special numbers',
-            decoration: const LotteryOutputsDecoration(primary: Colors.purple),
-          )
-        ],
+        numberOutputs: LotteryOutputs(
+          outputs: Lottery().numbers,
+          title: 'Numbers',
+          decoration: const LotteryOutputsDecoration(primary: Colors.cyan),
+        ),
+        specialNumberOutputs: LotteryOutputs(
+          outputs: Lottery().specialNumbers,
+          title: 'Special numbers',
+          decoration: const LotteryOutputsDecoration(primary: Colors.purple),
+        ),
         numbersLength: 4,
         specialNumbersLength: 3,
         numberDecoration: LotteryNumberItemDecoration(
