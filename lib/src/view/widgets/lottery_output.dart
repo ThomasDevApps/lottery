@@ -99,7 +99,7 @@ class LotteryOutputs extends StatelessWidget {
                         behavior: ScrollConfiguration.of(context).copyWith(
                           scrollbars: false,
                         ),
-                        child: _OutputsGridView(
+                        child: _OutputsWrap(
                           scrollController: scrollController,
                           outputsSorted: outputSorted,
                           decoration: decoration,
@@ -118,12 +118,12 @@ class LotteryOutputs extends StatelessWidget {
 }
 
 /// Widget to display [outputsSorted] in the [GridView].
-class _OutputsGridView extends StatelessWidget {
+class _OutputsWrap extends StatelessWidget {
   final ScrollController scrollController;
   final Map<int, int> outputsSorted;
   final LotteryOutputsDecoration decoration;
 
-  const _OutputsGridView({
+  const _OutputsWrap({
     required this.scrollController,
     required this.outputsSorted,
     required this.decoration,
@@ -131,52 +131,65 @@ class _OutputsGridView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
+    return SingleChildScrollView(
       controller: scrollController,
-      itemCount: outputsSorted.length,
-      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: decoration.crossAxisCount,
-        childAspectRatio: decoration.childAspectRatio,
-        mainAxisSpacing: 12.0,
-        crossAxisSpacing: 4.0,
+      child: Wrap(
+        spacing: 4.0,
+        runSpacing: 12.0,
+        children: [
+          ...outputsSorted.keys.map((key) {
+            final value = outputsSorted[key]!;
+            return LayoutBuilder(
+              builder: (context, constraint) {
+                return ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minWidth: 80,
+                    maxWidth: (constraint.maxWidth / 4) - 4,
+                  ).normalize(),
+                  child: AspectRatio(
+                    aspectRatio: 1 / 1.15,
+                    child: Card(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(16),
+                      ),
+                      color: decoration.primary.shade600,
+                      elevation: 0,
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                          horizontal: 8,
+                          vertical: 8,
+                        ),
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              key.toString(),
+                              style: TextStyle(
+                                color: decoration.foregroundColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
+                              ),
+                            ),
+                            const SizedBox(height: 5),
+                            Text(
+                              '(${value}x)',
+                              style: TextStyle(
+                                color: (decoration.foregroundColor ??
+                                    Theme.of(context).colorScheme.onBackground),
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
+            );
+          }),
+        ],
       ),
-      itemBuilder: (context, index) {
-        return Card(
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          color: decoration.primary.shade600,
-          elevation: 0,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-            child: FittedBox(
-              fit: BoxFit.scaleDown,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Text(
-                    outputsSorted.keys.elementAt(index).toString(),
-                    style: TextStyle(
-                      color: decoration.foregroundColor,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 18,
-                    ),
-                  ),
-                  const SizedBox(height: 5),
-                  Text(
-                    '(${outputsSorted.values.elementAt(index).toString()}x)',
-                    style: TextStyle(
-                      color: (decoration.foregroundColor ??
-                          Theme.of(context).colorScheme.onBackground),
-                      fontSize: 13,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
     );
   }
 }
