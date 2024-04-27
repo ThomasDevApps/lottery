@@ -32,7 +32,7 @@ class LotteryOutputsDecoration {
     this.constraints = const BoxConstraints(minWidth: 250),
     this.borderRadius,
     this.crossAxisCount = 5,
-    this.childAspectRatio = 1 / 1.4,
+    this.childAspectRatio = 1 / 1.25,
   });
 }
 
@@ -137,41 +137,46 @@ class _OutputsGridView extends StatelessWidget {
       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: decoration.crossAxisCount,
         childAspectRatio: decoration.childAspectRatio,
+        mainAxisSpacing: 12.0,
+        crossAxisSpacing: 4.0,
       ),
-      itemBuilder: (context, index) => Card(
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-        color: decoration.primary.shade600,
-        elevation: 0,
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 10),
-          child: FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  outputsSorted.keys.elementAt(index).toString(),
-                  style: TextStyle(
-                    color: decoration.foregroundColor,
-                    fontWeight: FontWeight.w400,
-                    fontSize: 18,
+      itemBuilder: (context, index) {
+        return Card(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          color: decoration.primary.shade600,
+          elevation: 0,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text(
+                    outputsSorted.keys.elementAt(index).toString(),
+                    style: TextStyle(
+                      color: decoration.foregroundColor,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                    ),
                   ),
-                ),
-                const SizedBox(height: 5),
-                Text(
-                  '(${outputsSorted.values.elementAt(index).toString()}x)',
-                  style: TextStyle(
-                    color: (decoration.foregroundColor ??
-                            Theme.of(context).colorScheme.onBackground)
-                        .withOpacity(0.75),
-                    fontSize: 13,
+                  const SizedBox(height: 5),
+                  Text(
+                    '(${outputsSorted.values.elementAt(index).toString()}x)',
+                    style: TextStyle(
+                      color: (decoration.foregroundColor ??
+                          Theme.of(context).colorScheme.onBackground),
+                      fontSize: 13,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
-        ),
-      ),
+        );
+      },
     );
   }
 }
