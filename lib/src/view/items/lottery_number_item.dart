@@ -40,6 +40,7 @@ class LotteryNumberItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 color: decoration.foregroundColor,
+                fontWeight: FontWeight.bold,
               ),
             ),
           ),
