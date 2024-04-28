@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:lottery/src/core/constants/constants.dart';
 
 /// Decoration for each [LotteryNumberItem].
 class LotteryNumberItemDecoration {
   final Color backgroundColor;
   final Color? foregroundColor;
 
-  LotteryNumberItemDecoration({
+  const LotteryNumberItemDecoration({
     required this.backgroundColor,
     this.foregroundColor,
   });
@@ -18,7 +19,7 @@ class LotteryNumberItem extends StatelessWidget {
   const LotteryNumberItem({
     super.key,
     required this.number,
-    required this.decoration,
+    this.decoration = kDefaultLotteryItemDecoration,
   });
 
   @override
