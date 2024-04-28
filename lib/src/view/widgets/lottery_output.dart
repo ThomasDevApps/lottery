@@ -1,15 +1,11 @@
 import 'dart:collection';
 
 import 'package:flutter/material.dart';
+import 'package:lottery/lottery.dart';
+import 'package:lottery/src/core/constants/constants.dart';
 
 /// Decoration for [LotteryOutputs].
 class LotteryOutputsDecoration {
-  /// Primary color of the container.
-  final MaterialColor primary;
-
-  /// Color of each number foreground.
-  final Color? foregroundColor;
-
   /// Width of the container.
   final double? width;
 
@@ -19,20 +15,10 @@ class LotteryOutputsDecoration {
   /// BorderRadius of the container.
   final BorderRadius? borderRadius;
 
-  /// The number of children in the cross axis.
-  final int crossAxisCount;
-
-  /// The ratio of the cross-axis to the main-axis extent of each child.
-  final double childAspectRatio;
-
   const LotteryOutputsDecoration({
-    required this.primary,
-    this.foregroundColor,
     this.width,
     this.constraints = const BoxConstraints(minWidth: 250),
     this.borderRadius,
-    this.crossAxisCount = 5,
-    this.childAspectRatio = 1 / 1.25,
   });
 }
 
@@ -49,11 +35,14 @@ class LotteryOutputs extends StatelessWidget {
   /// Decoration of the container.
   final LotteryOutputsDecoration decoration;
 
+  final LotteryNumberItemDecoration numberDecoration;
+
   const LotteryOutputs({
     super.key,
     required this.outputs,
     required this.title,
-    required this.decoration,
+    this.decoration = const LotteryOutputsDecoration(),
+    this.numberDecoration = kDefaultLotteryItemDecoration,
   });
 
   @override
@@ -77,8 +66,7 @@ class LotteryOutputs extends StatelessWidget {
               const SizedBox(height: 5),
               Text(
                 '$title :',
-                style: TextStyle(
-                  color: decoration.foregroundColor,
+                style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 17,
                 ),
@@ -91,7 +79,7 @@ class LotteryOutputs extends StatelessWidget {
                   child: RawScrollbar(
                     controller: scrollController,
                     thumbVisibility: true,
-                    thumbColor: decoration.foregroundColor ?? Colors.white,
+                    thumbColor: Colors.white,
                     radius: const Radius.circular(20),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5.0, right: 10.0),
@@ -102,7 +90,7 @@ class LotteryOutputs extends StatelessWidget {
                         child: _OutputsWrap(
                           scrollController: scrollController,
                           outputsSorted: outputSorted,
-                          decoration: decoration,
+                          numberDecoration: numberDecoration,
                         ),
                       ),
                     ),
@@ -121,12 +109,12 @@ class LotteryOutputs extends StatelessWidget {
 class _OutputsWrap extends StatelessWidget {
   final ScrollController scrollController;
   final Map<int, int> outputsSorted;
-  final LotteryOutputsDecoration decoration;
+  final LotteryNumberItemDecoration numberDecoration;
 
   const _OutputsWrap({
     required this.scrollController,
     required this.outputsSorted,
-    required this.decoration,
+    required this.numberDecoration,
   });
 
   @override
@@ -152,7 +140,7 @@ class _OutputsWrap extends StatelessWidget {
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      color: decoration.primary.shade600,
+                      color: numberDecoration.backgroundColor,
                       elevation: 0,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(
@@ -165,7 +153,7 @@ class _OutputsWrap extends StatelessWidget {
                             Text(
                               key.toString(),
                               style: TextStyle(
-                                color: decoration.foregroundColor,
+                                color: numberDecoration.foregroundColor,
                                 fontWeight: FontWeight.bold,
                                 fontSize: 18,
                               ),
@@ -174,7 +162,7 @@ class _OutputsWrap extends StatelessWidget {
                             Text(
                               '(${value}x)',
                               style: TextStyle(
-                                color: (decoration.foregroundColor ??
+                                color: (numberDecoration.foregroundColor ??
                                     Theme.of(context).colorScheme.onBackground),
                                 fontSize: 13,
                               ),

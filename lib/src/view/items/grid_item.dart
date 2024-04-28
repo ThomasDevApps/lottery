@@ -38,16 +38,20 @@ class GridItem extends StatelessWidget {
         direction: Axis.horizontal,
         children: [
           ...numbers.map(
-            (e) => LotteryNumberItem(
-              number: e,
-              decoration: numberDecoration,
-            ),
+            (number) {
+              return LotteryNumberItem(
+                number: number,
+                decoration: numberDecoration,
+              );
+            },
           ),
           ...specialNumbers.map(
-            (e) => LotteryNumberItem(
-              number: e,
-              decoration: specialNumberDecoration,
-            ),
+            (specialNumber) {
+              return LotteryNumberItem(
+                number: specialNumber,
+                decoration: specialNumberDecoration,
+              );
+            },
           ),
         ],
       ),

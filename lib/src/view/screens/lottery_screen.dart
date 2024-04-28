@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
+import 'package:lottery/src/core/constants/constants.dart';
 
 class LotteryScreen extends StatelessWidget {
   /// Background color of the screen.
@@ -34,12 +35,29 @@ class LotteryScreen extends StatelessWidget {
     required this.specialNumberOutputs,
     required this.numbersLength,
     required this.specialNumbersLength,
-    required this.numberDecoration,
-    required this.specialNumberDecoration,
+    this.numberDecoration = kDefaultLotteryItemDecoration,
+    this.specialNumberDecoration = kDefaultLotteryItemDecoration,
   });
 
   @override
   Widget build(BuildContext context) {
+    LotteryOutputs createLotteryOutputs(
+      LotteryOutputs lotteryOutputs,
+      LotteryNumberItemDecoration numberItemDecoration,
+    ) {
+      if (lotteryOutputs.numberDecoration == kDefaultLotteryItemDecoration) {
+        if (numberDecoration != kDefaultLotteryItemDecoration) {
+          return LotteryOutputs(
+            outputs: lotteryOutputs.outputs,
+            title: lotteryOutputs.title,
+            decoration: lotteryOutputs.decoration,
+            numberDecoration: numberItemDecoration,
+          );
+        }
+      }
+      return lotteryOutputs;
+    }
+
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Padding(
@@ -48,7 +66,9 @@ class LotteryScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const SizedBox(width: 8.0),
-            Expanded(child: numberOutputs),
+            Expanded(
+              child: createLotteryOutputs(numberOutputs, numberDecoration),
+            ),
             Expanded(
               flex: 3,
               child: Padding(
@@ -74,7 +94,12 @@ class LotteryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            Expanded(child: specialNumberOutputs),
+            Expanded(
+              child: createLotteryOutputs(
+                specialNumberOutputs,
+                specialNumberDecoration,
+              ),
+            ),
             const SizedBox(width: 8.0),
           ],
         ),
