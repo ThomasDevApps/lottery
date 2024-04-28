@@ -39,25 +39,32 @@ class LotteryScreen extends StatelessWidget {
     this.specialNumberDecoration = kDefaultLotteryItemDecoration,
   });
 
+  /// Function to create a [LotteryOutputs] with the good design.
+  ///
+  /// If [lotteryOutputs.numberDecoration] is equal to [kDefaultLotteryItemDecoration]
+  /// then the [numberItemDecoration] will be applied
+  /// (it can be [numberDecoration] or [specialNumberDecoration]).
+  ///
+  /// Otherwise [lotteryOutputs] will be return without any changements.
+  LotteryOutputs createLotteryOutputs(
+    LotteryOutputs lotteryOutputs,
+    LotteryNumberItemDecoration numberItemDecoration,
+  ) {
+    if (lotteryOutputs.numberDecoration == kDefaultLotteryItemDecoration) {
+      if (numberDecoration != kDefaultLotteryItemDecoration) {
+        return LotteryOutputs(
+          outputs: lotteryOutputs.outputs,
+          title: lotteryOutputs.title,
+          decoration: lotteryOutputs.decoration,
+          numberDecoration: numberItemDecoration,
+        );
+      }
+    }
+    return lotteryOutputs;
+  }
+
   @override
   Widget build(BuildContext context) {
-    LotteryOutputs createLotteryOutputs(
-      LotteryOutputs lotteryOutputs,
-      LotteryNumberItemDecoration numberItemDecoration,
-    ) {
-      if (lotteryOutputs.numberDecoration == kDefaultLotteryItemDecoration) {
-        if (numberDecoration != kDefaultLotteryItemDecoration) {
-          return LotteryOutputs(
-            outputs: lotteryOutputs.outputs,
-            title: lotteryOutputs.title,
-            decoration: lotteryOutputs.decoration,
-            numberDecoration: numberItemDecoration,
-          );
-        }
-      }
-      return lotteryOutputs;
-    }
-
     return Scaffold(
       backgroundColor: backgroundColor,
       body: Padding(
