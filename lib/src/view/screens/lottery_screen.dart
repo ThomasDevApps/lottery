@@ -35,8 +35,8 @@ class LotteryScreen extends StatelessWidget {
     required this.specialNumberOutputs,
     required this.numbersLength,
     required this.specialNumbersLength,
-    required this.numberDecoration,
-    required this.specialNumberDecoration,
+    this.numberDecoration = kDefaultLotteryItemDecoration,
+    this.specialNumberDecoration = kDefaultLotteryItemDecoration,
   });
 
   @override
@@ -96,7 +96,9 @@ class LotteryScreen extends StatelessWidget {
             ),
             Expanded(
               child: createLotteryOutputs(
-                  specialNumberOutputs, specialNumberDecoration),
+                specialNumberOutputs,
+                specialNumberDecoration,
+              ),
             ),
             const SizedBox(width: 8.0),
           ],
