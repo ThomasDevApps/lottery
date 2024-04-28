@@ -105,7 +105,7 @@ class LotteryOutputs extends StatelessWidget {
   }
 }
 
-/// Widget to display [outputsSorted] in the [GridView].
+/// Widget to display [outputsSorted] in [Wrap].
 class _OutputsWrap extends StatelessWidget {
   final ScrollController scrollController;
   final Map<int, int> outputsSorted;
