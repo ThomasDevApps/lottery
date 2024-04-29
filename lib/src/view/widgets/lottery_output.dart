@@ -79,8 +79,10 @@ class LotteryOutputs extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 5.0),
                   child: RawScrollbar(
                     controller: scrollController,
-                    thumbVisibility: true,
-                    thumbColor: Colors.white,
+                    thumbColor: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withOpacity(0.5),
                     radius: const Radius.circular(20),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5.0, right: 10.0),
