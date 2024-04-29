@@ -29,7 +29,6 @@ class LotteryLastGridDrawn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gridModel = Lottery().gridsFromCsv.first;
-    const padding = EdgeInsets.symmetric(horizontal: 16, vertical: 24);
     final radius = _getRadius(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -67,7 +66,7 @@ class LotteryLastGridDrawn extends StatelessWidget {
             ),
           ),
           child: Padding(
-            padding: padding,
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
             child: GridItem(
               gridModel: gridModel,
               numberDecoration: numberDecoration,
