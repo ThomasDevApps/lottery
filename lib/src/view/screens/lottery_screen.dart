@@ -3,6 +3,9 @@ import 'package:lottery/lottery.dart';
 import 'package:lottery/src/core/constants/constants.dart';
 
 class LotteryScreen extends StatelessWidget {
+  /// Label of the lottery..
+  final String? label;
+
   /// Background color of the screen.
   final Color? backgroundColor;
 
@@ -29,6 +32,7 @@ class LotteryScreen extends StatelessWidget {
 
   const LotteryScreen({
     super.key,
+    this.label,
     this.backgroundColor,
     this.cardColor,
     required this.numberOutputs,
@@ -83,6 +87,11 @@ class LotteryScreen extends StatelessWidget {
                 child: SingleChildScrollView(
                   child: Column(
                     children: [
+                      Text(
+                        label ?? 'Lottery',
+                        style: Theme.of(context).textTheme.displaySmall,
+                      ),
+                      const SizedBox(height: 16),
                       LotteryLastGridDrawn(
                         numberDecoration: numberDecoration,
                         specialNumberDecoration: specialNumberDecoration,

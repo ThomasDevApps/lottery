@@ -55,9 +55,10 @@ class LotteryOutputs extends StatelessWidget {
       width: decoration.width ?? MediaQuery.of(context).size.width / 5.5,
       child: Card(
         color: Theme.of(context).cardTheme.color ?? Theme.of(context).cardColor,
-        shape: RoundedRectangleBorder(
-          borderRadius: decoration.borderRadius ?? BorderRadius.circular(10),
-        ),
+        shape: Theme.of(context).cardTheme.shape ??
+            RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(24.0),
+            ),
         clipBehavior: Clip.hardEdge,
         child: Padding(
           padding: const EdgeInsets.only(left: 8.0),
@@ -78,8 +79,10 @@ class LotteryOutputs extends StatelessWidget {
                   padding: const EdgeInsets.only(right: 5.0),
                   child: RawScrollbar(
                     controller: scrollController,
-                    thumbVisibility: true,
-                    thumbColor: Colors.white,
+                    thumbColor: Theme.of(context)
+                        .colorScheme
+                        .onBackground
+                        .withOpacity(0.5),
                     radius: const Radius.circular(20),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 5.0, right: 10.0),
