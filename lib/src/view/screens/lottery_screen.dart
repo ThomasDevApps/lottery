@@ -89,7 +89,7 @@ class LotteryScreen extends StatelessWidget {
                     children: [
                       Text(
                         label ?? 'Lottery',
-                        style: Theme.of(context).textTheme.titleLarge,
+                        style: Theme.of(context).textTheme.displaySmall,
                       ),
                       const SizedBox(height: 16),
                       LotteryLastGridDrawn(
