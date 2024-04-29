@@ -54,8 +54,6 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 ```
-## Test
-example/lib/main.dart
 
 The `pathCsv` can be for example `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`.
 
