@@ -15,8 +15,14 @@ and the Flutter guide for
 
 ![testing workflow](https://github.com/ThomasDevApps/lottery/actions/workflows/testing.yml/badge.svg)
 
-Lottery package, see the number of times the numbers have been drawn, 
-draw a lottery grid taking into account the probabilities, etc...
+A lottery-related package which, among other things, 
+lets you see how many times numbers have been drawn at random, 
+draw a grid taking into account probabilities, etc...
+
+Please note that this type of program in no way guarantees that you will 
+have better lottery luck.
+
+
 
 ## Features
 
