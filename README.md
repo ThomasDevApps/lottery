@@ -22,8 +22,6 @@ draw a grid taking into account probabilities, etc...
 Please note that this type of program in no way guarantees that you will 
 have better lottery luck.
 
-
-
 ## Features
 
 - See how many times numbers have been drawn
@@ -56,6 +54,8 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 ```
+## Test
+example/lib/main.dart
 
 The `pathCsv` can be for example `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`.
 
