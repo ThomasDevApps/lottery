@@ -17,20 +17,28 @@ class LotteryLastGridDrawn extends StatelessWidget {
     this.cardColor,
   });
 
+  Radius _getRadius(BuildContext context) {
+    final shape = Theme.of(context).cardTheme.shape;
+    if (shape != null && shape is RoundedRectangleBorder) {
+      return shape.borderRadius.resolve(TextDirection.ltr).topRight;
+    } else {
+      return const Radius.circular(24);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final gridModel = Lottery().gridsFromCsv.first;
     const padding = EdgeInsets.symmetric(horizontal: 16, vertical: 24);
+    final radius = _getRadius(context);
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Card(
           color: cardColor,
           margin: EdgeInsets.zero,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(24),
-            ),
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(top: radius),
           ),
           child: Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
@@ -51,11 +59,11 @@ class LotteryLastGridDrawn extends StatelessWidget {
         Card(
           margin: EdgeInsets.zero,
           color: cardColor,
-          shape: const RoundedRectangleBorder(
+          shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.only(
-              topRight: Radius.circular(24),
-              bottomLeft: Radius.circular(24),
-              bottomRight: Radius.circular(24),
+              topRight: radius,
+              bottomLeft: radius,
+              bottomRight: radius,
             ),
           ),
           child: Padding(
