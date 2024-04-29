@@ -26,8 +26,7 @@ have better lottery luck.
 
 ## Features
 
-- Access to statistics for each number and special number 
-(find out how many times the number has been drawn)
+- See how many times numbers have been drawn
 - Draw a grid at random while taking into account the probability of 
 each number being drawn.
 - Find out if the grid drawn at random is a winning grid
