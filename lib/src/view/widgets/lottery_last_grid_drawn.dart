@@ -20,14 +20,22 @@ class LotteryLastGridDrawn extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final gridModel = Lottery().gridsFromCsv.first;
-    return Card(
-      color: cardColor,
-      child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Row(
+    const padding = EdgeInsets.symmetric(horizontal: 16, vertical: 24);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Card(
+          color: cardColor,
+          margin: EdgeInsets.zero,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.vertical(
+              top: Radius.circular(24),
+            ),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Icon(Icons.info_outline_rounded),
@@ -38,15 +46,28 @@ class LotteryLastGridDrawn extends StatelessWidget {
                 ),
               ],
             ),
-            const SizedBox(height: 16),
-            GridItem(
+          ),
+        ),
+        Card(
+          margin: EdgeInsets.zero,
+          color: cardColor,
+          shape: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topRight: Radius.circular(24),
+              bottomLeft: Radius.circular(24),
+              bottomRight: Radius.circular(24),
+            ),
+          ),
+          child: Padding(
+            padding: padding,
+            child: GridItem(
               gridModel: gridModel,
               numberDecoration: numberDecoration,
               specialNumberDecoration: specialNumberDecoration,
             ),
-          ],
+          ),
         ),
-      ),
+      ],
     );
   }
 }
