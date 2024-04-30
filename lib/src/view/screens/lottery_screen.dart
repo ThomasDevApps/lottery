@@ -55,7 +55,7 @@ class LotteryScreen extends StatelessWidget {
     LotteryNumberItemDecoration numberItemDecoration,
   ) {
     if (lotteryOutputs.numberDecoration == kDefaultLotteryItemDecoration) {
-      if (numberDecoration != kDefaultLotteryItemDecoration) {
+      if (numberItemDecoration != kDefaultLotteryItemDecoration) {
         return LotteryOutputs(
           outputs: lotteryOutputs.outputs,
           title: lotteryOutputs.title,
