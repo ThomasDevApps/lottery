@@ -28,6 +28,7 @@ have better lottery luck.
 - Draw a grid at random while taking into account the probability of 
 each number being drawn.
 - Find out if the grid drawn at random is a winning grid
+- Access to csv statistics: number of grids present, date of last and first grid drawn.
 
 ## Preview
 
