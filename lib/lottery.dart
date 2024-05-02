@@ -156,4 +156,13 @@ class Lottery {
   void dispose() {
     _instance = null;
   }
+
+  /// Function to get the length of [gridsFromCsv].
+  int getNumberOfGrids() => gridsFromCsv.length;
+
+  /// Function to get when the more recent grid has been drawn.
+  String? lastGridDrawnAt() => gridsFromCsv.firstOrNull?.drawnAt;
+
+  /// Function to get when the first grid (chronologically) has been drawn
+  String? firstGridDrawnAt() => gridsFromCsv.lastOrNull?.drawnAt;
 }
