@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:lottery/lottery.dart';
 import 'package:lottery/src/core/constants/constants.dart';
+import 'package:lottery/src/view/widgets/lottery_statistics.dart';
 
 class LotteryScreen extends StatelessWidget {
   /// Label of the lottery..
@@ -111,9 +112,23 @@ class LotteryScreen extends StatelessWidget {
               ),
             ),
             Expanded(
-              child: createLotteryOutputs(
-                specialNumberOutputs,
-                specialNumberDecoration,
+              child: Column(
+                children: [
+                  Expanded(
+                    flex: 3,
+                    child: createLotteryOutputs(
+                      specialNumberOutputs,
+                      specialNumberDecoration,
+                    ),
+                  ),
+                  const SizedBox(height: 8),
+                  Expanded(
+                    flex: 2,
+                    child: LotteryStatistics(
+                      cardColor: cardColor,
+                    ),
+                  ),
+                ],
               ),
             ),
             const SizedBox(width: 8.0),

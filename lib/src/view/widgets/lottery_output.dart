@@ -52,7 +52,7 @@ class LotteryOutputs extends StatelessWidget {
 
     return Container(
       constraints: decoration.constraints,
-      width: decoration.width ?? MediaQuery.of(context).size.width / 5.5,
+      width: decoration.width ?? double.infinity,
       child: Card(
         color: Theme.of(context).cardTheme.color ?? Theme.of(context).cardColor,
         shape: Theme.of(context).cardTheme.shape ??
@@ -64,16 +64,13 @@ class LotteryOutputs extends StatelessWidget {
           padding: const EdgeInsets.only(left: 8.0),
           child: Column(
             children: [
-              const SizedBox(height: 5),
+              const SizedBox(height: 8),
               Text(
-                '$title :',
-                style: const TextStyle(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 17,
-                ),
+                title,
+                style: Theme.of(context).textTheme.titleLarge,
                 textAlign: TextAlign.center,
               ),
-              const SizedBox(height: 10),
+              const SizedBox(height: 16),
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.only(right: 5.0),
