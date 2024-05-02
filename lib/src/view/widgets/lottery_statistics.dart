@@ -14,31 +14,66 @@ class LotteryStatistics extends StatelessWidget {
         color: cardColor,
         child: Padding(
           padding: const EdgeInsets.all(8.0),
-          child: Wrap(
-            crossAxisAlignment: WrapCrossAlignment.center,
-            runAlignment: WrapAlignment.center,
-            direction: Axis.vertical,
-            spacing: 16.0,
+          child: ListView(
             children: [
-              Text(
-                'Statistics',
-                style: Theme.of(context).textTheme.titleLarge,
+              Center(
+                child: Text(
+                  'Statistics',
+                  style: Theme.of(context).textTheme.titleLarge,
+                ),
               ),
-              const SizedBox(height: 4),
-              Text(
-                '• ${Lottery().gridsFromCsv.length} grids from data',
-                style: Theme.of(context).textTheme.titleMedium,
+              const SizedBox(height: 24),
+              _StatisticItem(
+                title: 'Grids from data',
+                cardColor: cardColor,
+                content: Lottery().gridsFromCsv.length.toString(),
               ),
-              Text(
-                '• First grid drawn at ${Lottery().gridsFromCsv.lastOrNull?.drawnAt}',
-                style: Theme.of(context).textTheme.titleMedium,
+              const SizedBox(height: 16),
+              _StatisticItem(
+                title: 'Last grid drawn',
+                cardColor: cardColor,
+                content: Lottery().gridsFromCsv.firstOrNull?.drawnAt ?? '?',
               ),
-              Text(
-                '• Last grid drawn at ${Lottery().gridsFromCsv.firstOrNull?.drawnAt}',
-                style: Theme.of(context).textTheme.titleMedium,
+              const SizedBox(height: 16),
+              _StatisticItem(
+                title: 'First grid drawn',
+                cardColor: cardColor,
+                content: Lottery().gridsFromCsv.lastOrNull?.drawnAt ?? '?',
               ),
             ],
           ),
+        ),
+      ),
+    );
+  }
+}
+
+class _StatisticItem extends StatelessWidget {
+  final String title;
+  final String content;
+  final Color? cardColor;
+  const _StatisticItem({
+    required this.title,
+    required this.content,
+    this.cardColor,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      margin: const EdgeInsets.symmetric(horizontal: 16),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(
+          horizontal: 16,
+          vertical: 12,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Text(title),
+            const SizedBox(height: 8),
+            Text(content, style: const TextStyle(fontWeight: FontWeight.bold)),
+          ],
         ),
       ),
     );
