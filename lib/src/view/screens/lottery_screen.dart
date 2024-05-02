@@ -121,6 +121,7 @@ class LotteryScreen extends StatelessWidget {
                       specialNumberDecoration,
                     ),
                   ),
+                  const SizedBox(height: 8),
                   Expanded(
                     flex: 2,
                     child: LotteryStatistics(

@@ -11,37 +11,36 @@ class LotteryStatistics extends StatelessWidget {
       width: double.infinity,
       height: double.infinity,
       child: Card(
+        clipBehavior: Clip.hardEdge,
         color: cardColor,
-        child: Padding(
+        child: ListView(
           padding: const EdgeInsets.all(8.0),
-          child: ListView(
-            children: [
-              Center(
-                child: Text(
-                  'Statistics',
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
+          children: [
+            Center(
+              child: Text(
+                'Statistics',
+                style: Theme.of(context).textTheme.titleLarge,
               ),
-              const SizedBox(height: 24),
-              _StatisticItem(
-                title: 'Grids from data',
-                cardColor: cardColor,
-                content: Lottery().gridsFromCsv.length.toString(),
-              ),
-              const SizedBox(height: 16),
-              _StatisticItem(
-                title: 'Last grid drawn',
-                cardColor: cardColor,
-                content: Lottery().gridsFromCsv.firstOrNull?.drawnAt ?? '?',
-              ),
-              const SizedBox(height: 16),
-              _StatisticItem(
-                title: 'First grid drawn',
-                cardColor: cardColor,
-                content: Lottery().gridsFromCsv.lastOrNull?.drawnAt ?? '?',
-              ),
-            ],
-          ),
+            ),
+            const SizedBox(height: 24),
+            _StatisticItem(
+              title: 'Grids from data',
+              cardColor: cardColor,
+              content: Lottery().gridsFromCsv.length.toString(),
+            ),
+            const SizedBox(height: 16),
+            _StatisticItem(
+              title: 'Last grid drawn',
+              cardColor: cardColor,
+              content: Lottery().gridsFromCsv.firstOrNull?.drawnAt ?? '?',
+            ),
+            const SizedBox(height: 16),
+            _StatisticItem(
+              title: 'First grid drawn',
+              cardColor: cardColor,
+              content: Lottery().gridsFromCsv.lastOrNull?.drawnAt ?? '?',
+            ),
+          ],
         ),
       ),
     );
