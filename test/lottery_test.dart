@@ -45,9 +45,9 @@ void main() {
 
     test('Test initialize drawnAt for each grid', () async {
       await _initializeLottery();
-      expect(Lottery().gridsFromCsv[0].drawnAt, '15/04/2024');
+      expect(Lottery().gridsFromCsv[0].drawnAt, '22/04/2024');
       expect(Lottery().gridsFromCsv[1].drawnAt, '18/04/2024');
-      expect(Lottery().gridsFromCsv[2].drawnAt, '22/04/2024');
+      expect(Lottery().gridsFromCsv[2].drawnAt, '15/04/2024');
     });
   });
 
@@ -68,7 +68,7 @@ void main() {
         specialNumbers: {1, 35, 5},
       );
       expect(
-        Lottery().wasWinningGrid(gridModel) == Lottery().gridsFromCsv.first,
+        Lottery().wasWinningGrid(gridModel) == Lottery().gridsFromCsv.last,
         true,
       );
     });
@@ -81,5 +81,20 @@ void main() {
       );
       expect(Lottery().wasWinningGrid(gridModel), null);
     });
+  });
+
+  test('Test getNumberOfGrids', () async {
+    await _initializeLottery();
+    expect(Lottery().getNumberOfGrids(), 3);
+  });
+
+  test('Test lastGridDrawnAt', () async {
+    await _initializeLottery();
+    expect(Lottery().lastGridDrawnAt(), '22/04/2024');
+  });
+
+  test('Test firstGridDrawnAt', () async {
+    await _initializeLottery();
+    expect(Lottery().firstGridDrawnAt(), '15/04/2024');
   });
 }
