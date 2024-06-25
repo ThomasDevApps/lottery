@@ -60,6 +60,7 @@ class _StatisticItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
+      color: cardColor ?? Theme.of(context).scaffoldBackgroundColor,
       margin: const EdgeInsets.symmetric(horizontal: 16),
       child: Padding(
         padding: const EdgeInsets.symmetric(
