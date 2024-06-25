@@ -8,9 +8,11 @@ part of 'grid_model.dart';
 
 _$GridModelImpl _$$GridModelImplFromJson(Map<String, dynamic> json) =>
     _$GridModelImpl(
-      numbers: (json['numbers'] as List<dynamic>).map((e) => e as int).toSet(),
+      numbers: (json['numbers'] as List<dynamic>)
+          .map((e) => (e as num).toInt())
+          .toSet(),
       specialNumbers: (json['specialNumbers'] as List<dynamic>)
-          .map((e) => e as int)
+          .map((e) => (e as num).toInt())
           .toSet(),
       drawnAt: json['drawnAt'] as String?,
     );

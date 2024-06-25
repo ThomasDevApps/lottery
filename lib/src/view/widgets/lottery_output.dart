@@ -54,7 +54,7 @@ class LotteryOutputs extends StatelessWidget {
       constraints: decoration.constraints,
       width: decoration.width ?? double.infinity,
       child: Card(
-        color: Theme.of(context).cardTheme.color ?? Theme.of(context).cardColor,
+        color: Theme.of(context).cardTheme.color,
         shape: Theme.of(context).cardTheme.shape ??
             RoundedRectangleBorder(
               borderRadius: BorderRadius.circular(24.0),
@@ -78,7 +78,7 @@ class LotteryOutputs extends StatelessWidget {
                     controller: scrollController,
                     thumbColor: Theme.of(context)
                         .colorScheme
-                        .onBackground
+                        .onSurface
                         .withOpacity(0.5),
                     radius: const Radius.circular(20),
                     child: Padding(
@@ -163,7 +163,7 @@ class _OutputsWrap extends StatelessWidget {
                               '(${value}x)',
                               style: TextStyle(
                                 color: (numberDecoration.foregroundColor ??
-                                    Theme.of(context).colorScheme.onBackground),
+                                    Theme.of(context).colorScheme.onSurface),
                                 fontSize: 13,
                               ),
                             ),
