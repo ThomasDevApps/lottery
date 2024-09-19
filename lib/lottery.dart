@@ -27,7 +27,7 @@ class Lottery {
   final Map<int, int> specialNumbers = {};
   final List<GridModel> gridsFromCsv = [];
 
-  bool _isInitialized = false;
+  bool _isInitialize = false;
 
   /// Private constructor of [Lottery].
   Lottery._();
@@ -58,7 +58,7 @@ class Lottery {
     Pattern pattern = ';',
   }) async {
     _instance ??= Lottery._();
-    if (!_instance!._isInitialized) {
+    if (!_instance!._isInitialize) {
       final resultCsv = await _CsvUtils.readNumbersCsv(pathCsv);
       // For each line from the csv
       for (var line in resultCsv) {
@@ -78,7 +78,7 @@ class Lottery {
       }
       _instance!.initializeStatistics();
       // Set isInitialized to true
-      _instance!._isInitialized = true;
+      _instance!._isInitialize = true;
     }
   }
 
