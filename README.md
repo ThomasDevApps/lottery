@@ -48,8 +48,8 @@ Future<void> main() async {
   // Initialize the Lottery instance
   await Lottery.initialize(
     pathCsv: 'assets\\data_test.csv', // Path to data
-    numberColumnIndexes: [0, 1, 2, 3], // If the numbers are in the 1,2,3 and 4 column's index
-    specialNumberColumnIndexes: [4, 5, 6], // If the special numbers are in the 5,6 and 7 column's index
+    numberIndexes: [0, 1, 2, 3], // If the numbers are in the 1,2,3 and 4 column's index
+    specialNumberIndexes: [4, 5, 6], // If the special numbers are in the 5,6 and 7 column's index
   );
   // Run the app
   runApp(const MyApp());

@@ -34,23 +34,26 @@ class Lottery {
 
   /// Factory constructor of [Lottery], returns [_instance].
   factory Lottery() {
+    if (_instance == null) {
+      throw Exception('You must call Lottery.initialize() first');
+    }
     return _instance!;
   }
 
   /// Function to initialize [_instance].
   ///
-  /// - [numberColumnIndexes] is a list containing all the indexes
+  /// - [numberIndexes] is a list containing all the indexes
   /// of the columns containing the numbers.
   ///
-  /// - [specialNumberColumnIndexes] is a list containing all the indexes
+  /// - [specialNumberIndexes] is a list containing all the indexes
   /// of the columns containing the special numbers.
   ///
   /// - [dateTimeColumnIndex] is the index of the column containing
   /// the date of the draw for the grid (example : 15/04/2024)
   static Future<void> initialize({
     required String pathCsv,
-    required List<int> numberColumnIndexes,
-    required List<int> specialNumberColumnIndexes,
+    required List<int> numberIndexes,
+    required List<int> specialNumberIndexes,
     int? dateTimeColumnIndex,
     Pattern pattern = ';',
   }) async {
@@ -62,10 +65,9 @@ class Lottery {
         // Split field
         List<dynamic> fields = (line.first as String).split(pattern);
         final grid = GridModel(
-          numbers: numberColumnIndexes.map((e) => int.parse(fields[e])).toSet(),
-          specialNumbers: specialNumberColumnIndexes
-              .map((e) => int.parse(fields[e]))
-              .toSet(),
+          numbers: numberIndexes.map((e) => int.parse(fields[e])).toSet(),
+          specialNumbers:
+              specialNumberIndexes.map((e) => int.parse(fields[e])).toSet(),
           drawnAt: dateTimeColumnIndex != null
               ? (fields.elementAt(dateTimeColumnIndex) as String)
                   .split('\r')
@@ -158,11 +160,11 @@ class Lottery {
   }
 
   /// Function to get the length of [gridsFromCsv].
-  int getNumberOfGrids() => gridsFromCsv.length;
+  int get numberOfGrids => gridsFromCsv.length;
 
   /// Function to get when the more recent grid has been drawn.
-  String? lastGridDrawnAt() => gridsFromCsv.firstOrNull?.drawnAt;
+  String? get lastGridDrawnAt => gridsFromCsv.firstOrNull?.drawnAt;
 
   /// Function to get when the first grid (chronologically) has been drawn
-  String? firstGridDrawnAt() => gridsFromCsv.lastOrNull?.drawnAt;
+  String? get firstGridDrawnAt => gridsFromCsv.lastOrNull?.drawnAt;
 }
