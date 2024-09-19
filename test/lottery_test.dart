@@ -6,8 +6,8 @@ Future<void> _initializeLottery() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
     pathCsv: 'assets/data_test.csv',
-    numberColumnIndexes: [0, 1, 2, 3],
-    specialNumberColumnIndexes: [4, 5, 6],
+    numberIndexes: [0, 1, 2, 3],
+    specialNumberIndexes: [4, 5, 6],
     dateTimeColumnIndex: 7,
   );
   addTearDown(Lottery().dispose);
@@ -85,16 +85,16 @@ void main() {
 
   test('Test getNumberOfGrids', () async {
     await _initializeLottery();
-    expect(Lottery().getNumberOfGrids(), 3);
+    expect(Lottery().numberOfGrids, 3);
   });
 
   test('Test lastGridDrawnAt', () async {
     await _initializeLottery();
-    expect(Lottery().lastGridDrawnAt(), '22/04/2024');
+    expect(Lottery().lastGridDrawnAt, '22/04/2024');
   });
 
   test('Test firstGridDrawnAt', () async {
     await _initializeLottery();
-    expect(Lottery().firstGridDrawnAt(), '15/04/2024');
+    expect(Lottery().firstGridDrawnAt, '15/04/2024');
   });
 }

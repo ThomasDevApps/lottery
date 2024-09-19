@@ -26,19 +26,19 @@ class LotteryStatistics extends StatelessWidget {
             _StatisticItem(
               title: 'Grids from data',
               cardColor: cardColor,
-              content: Lottery().getNumberOfGrids().toString(),
+              content: Lottery().numberOfGrids.toString(),
             ),
             const SizedBox(height: 16),
             _StatisticItem(
               title: 'Last grid drawn',
               cardColor: cardColor,
-              content: Lottery().lastGridDrawnAt() ?? '?',
+              content: Lottery().lastGridDrawnAt ?? '?',
             ),
             const SizedBox(height: 16),
             _StatisticItem(
               title: 'First grid drawn',
               cardColor: cardColor,
-              content: Lottery().firstGridDrawnAt() ?? '?',
+              content: Lottery().firstGridDrawnAt ?? '?',
             ),
           ],
         ),
