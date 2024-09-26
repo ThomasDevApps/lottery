@@ -22,21 +22,13 @@ draw a grid taking into account probabilities, etc...
 Please note that this type of program in no way guarantees that you will 
 have better lottery luck.
 
-## Features
+## 🔎 Preview
 
-- See how many times numbers have been drawn
-- Draw a grid at random while taking into account the probability of 
-each number being drawn.
-- Find out if the grid drawn at random is a winning grid
-- Access to csv statistics: number of grids present, date of last and first grid drawn.
-
-## Preview
+*The design is customisable.*
 
 ![Alt text](./example/assets/preview.png?raw=true "Title")
 
-The design is customisable.
-
-## Getting started
+## 🚀 Getting started
 
 At the top of the application, you need to initialise the lottery with a 
 CSV file to be used as data : 
@@ -58,10 +50,18 @@ Future<void> main() async {
 
 The `pathCsv` can be for example `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`.
 
-## Usage
+## 🪄 Features
+
+- See how many times numbers have been drawn
+- Draw a grid at random while taking into account the probability of 
+each number being drawn.
+- Find out if the grid drawn at random is a winning grid
+- Access to csv statistics: number of grids present, date of last and first grid drawn.
+
+## 📖 Usage
 
 A complete example is in the `example` folder.
 
-## Additional information
+## ❔ Additional information
 
 This package is not officially linked to any lottery.
