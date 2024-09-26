@@ -22,6 +22,12 @@ draw a grid taking into account probabilities, etc...
 Please note that this type of program in no way guarantees that you will 
 have better lottery luck.
 
+## 🔎 Preview
+
+*The design is customisable.*
+
+![Alt text](./example/assets/preview.png?raw=true "Title")
+
 ## 🚀 Getting started
 
 At the top of the application, you need to initialise the lottery with a 
@@ -41,12 +47,6 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 ```
-
-## 🔎 Preview
-
-![Alt text](./example/assets/preview.png?raw=true "Title")
-
-The design is customisable.
 
 The `pathCsv` can be for example `C:\\Users\\username\\Desktop\\Data\\MyLottery\\data.csv`.
 
