@@ -2,10 +2,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:lottery/lottery.dart';
 
-Future<void> _initializeLottery() async {
+Future<void> _initializeLottery({bool onRowData = false}) async {
   WidgetsFlutterBinding.ensureInitialized();
   await Lottery.initialize(
-    pathCsv: 'assets/data_test.csv',
+    pathCsv:
+        onRowData ? 'assets/data_one_row_test.csv' : 'assets/data_test.csv',
     numberIndexes: [0, 1, 2, 3],
     specialNumberIndexes: [4, 5, 6],
     dateTimeColumnIndex: 7,
@@ -81,6 +82,8 @@ void main() {
       );
       expect(Lottery().wasWinningGrid(gridModel), null);
     });
+
+    testWidgets('Test that isWinning grid is show', (tester) async {});
   });
 
   test('Test getNumberOfGrids', () async {
